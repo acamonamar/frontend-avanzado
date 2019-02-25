@@ -1,3 +1,7 @@
-<p>
-  signin works!
-</p>
+<form id="contactForm" [formGroup]="formLogin" (ngSubmit)="submit()">
+  <input type="email" formControlName="email" placeholder="Email" >
+  <input type="password" formControlName="password" placeholder="Password" >
+  <input type="submit" value="Login" [disabled]="!formLogin.valid">
+</form>
+<p>Form status: {{formLogin.status}}</p>
+<a [routerLink]="['/forgot-password']">Recuperar contraseña</a>

@@ -1,18 +1,31 @@
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './shared/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+
 import { RouterModule } from '@angular/router';
 import { rootRouterConfig } from './app-routing';
 
+import { AppComponent } from './app.component';
+
+
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FakeBackendService } from './shared/services/fake-backend.service';
+import {AppService} from './app.service';
+
+
 @NgModule({
-  imports: [
-    SharedModule,
-    CoreModule,
-    RouterModule.forRoot(rootRouterConfig, { useHash: false })
+  declarations: [
+      AppComponent,
   ],
-  declarations: [AppComponent],
-  providers: [],
+  imports: [
+    BrowserModule,
+      FormsModule,
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(FakeBackendService),
+    RouterModule.forRoot(rootRouterConfig, { enableTracing: true }),
+  ],
+  providers: [AppService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
