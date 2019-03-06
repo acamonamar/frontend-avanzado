@@ -4,12 +4,12 @@ export class FakeBackendService implements InMemoryDbService {
         const users = [
             {
                 id: 1,
-                user: 'alejandro',
+                user: 'jandrocm@gmail.com',
                 password: '1234'
             },
             {
                 id: 2,
-                user: 'admin',
+                user: 'admin@uoc.edu',
                 password: '1234'
             }
         ];

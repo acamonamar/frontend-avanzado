@@ -28,7 +28,7 @@ export class SigninComponent implements OnInit {
   ngOnInit() {
     this.title = 'Acceso';
     this.formLogin = this.formBuilder.group({
-      'email': ['', Validators.required],
+      'email': ['', [Validators.required, Validators.email]],
       'password': ['', Validators.required]
     });
 
@@ -57,7 +57,7 @@ export class SigninComponent implements OnInit {
                 && (this.login[i].password === this.formLogin.value.password )) {
               console.log(this.login[i].user);
               console.log(this.login[i].password);
-              this._router.navigateByUrl ('/admin');
+              this._router.navigateByUrl ('/admin/dashboard');
               /*let u: User = {user: username, passwd: password};
               this._userService.setUserLoggedIn(u);*/
               console.log('son iguales');
@@ -65,8 +65,6 @@ export class SigninComponent implements OnInit {
           }
         });
     console.log(this.formLogin.value);
-
-
   }
 /*
   logIn(username: string, password: string, event: Event) {
