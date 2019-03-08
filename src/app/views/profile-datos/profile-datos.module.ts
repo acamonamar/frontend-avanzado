@@ -1,0 +1,17 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule} from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ProfileDatosRoutingModule } from './profile-datos-routing.module';
+import { ProfileDatosComponent} from './profile-datos.component';
+
+@NgModule({
+    declarations: [ProfileDatosComponent],
+    imports: [
+        CommonModule,
+        ProfileDatosRoutingModule,
+        ReactiveFormsModule,
+        FormsModule
+    ]
+})
+export class ProfileDatosModule { }

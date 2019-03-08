@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-
 @Injectable()
 export class SigninService {
     base_url = 'http://localhost:4200/api/';

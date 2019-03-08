@@ -1,5 +1,85 @@
-<p>
-  profile works!
-</p>
 
-{{users.id}}
+<section class="container datos">
+    <div>
+        <img src="assets/img/main.jpg" width="100px">
+        <span>{{identity.name}} {{identity.surname}}</span>
+    </div>
+    <div>
+        Email: {{identity.email}} <br>
+        Fecha Nacimiento: {{identity.birthday}}<br>
+        Teléfono: {{identity.phone}}<br>
+        NIF/NIE: {{identity.dni}}<br>
+        Permisos conducir {{identity.permisos}}
+    </div>
+    <div>
+        Acerca de mi: {{identity.about}}
+    </div>
+    <div>
+        Otras competencias: {{identity.other}}
+    </div>
+</section>
+<a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+
+<section class="container formacion">
+    <h2>Formación Académica</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nivel</th>
+                <th>Título</th>
+                <th>Centro</th>
+                <th>Fecha</th>
+                <th>Certificado</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let key of keys_studies">
+            <tr>
+                <td>{{identity.studies.entities[key].level}}</td>
+                <td>{{identity.studies.entities[key].title}}</td>
+                <td>{{identity.studies.entities[key].institution}}</td>
+                <td>{{identity.studies.entities[key].date}}</td>
+                <td>{{identity.studies.entities[key].certificate}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="container experiencia">
+    <h2>Experiencia Laboral</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Puesto</th>
+            <th>Fechas</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let key of keys_experiences">
+        <tr>
+            <td>{{identity.experiences.entities[key].company}}</td>
+            <td>{{identity.experiences.entities[key].position}}</td>
+            <td>{{identity.experiences.entities[key].date}}</td>
+        </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="container experiencia">
+    <h2>Idiomas</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>Empresa</th>
+            <th>Puesto</th>
+            <th>Fechas</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let key of keys_languages">
+        <tr>
+            <td>{{identity.languages.entities[key].level}}</td>
+            <td>{{identity.languages.entities[key].name}}</td>
+            <td>{{identity.languages.entities[key].date}}</td>
+        </tr>
+        </tbody>
+    </table>
+</section>

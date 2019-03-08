@@ -8,9 +8,12 @@ import { Store } from '@ngrx/store';
 import * as UserActions from 'app/shared/states/user/actions';
 import { User } from 'app/shared/models/user'; */
 
+
 @Injectable()
 export class ProfileService {
-  private mockUser = {
+  public identity;
+
+  /* private mockUser = {
     uid: 'ajvazquez',
     name: 'Antonio Jesús',
     surname: 'Vázquez Muñoz',
@@ -117,27 +120,38 @@ export class ProfileService {
         }
       ]
     }
-  } as any /* UserOptions */;
+  } as any /* UserOptions ;*/
 
   constructor(
     private http: HttpClient /* , private store$: Store<AppStore> */
   ) {}
 
-  loadProfile(): Observable<any /* UserOptions */> {
+  getIdentity() {
+    const identity = JSON.parse(localStorage.getItem('identity'));
+    console.log('Dentro de getIdentity' + identity);
+    if (identity !== 'undefined') {
+      this.identity = identity;
+    } else {
+      this.identity = null;
+    }
+    return this.identity;
+  }
+  /*
+  loadProfile(): Observable<any /* UserOptions > {
     return of(this.mockUser as any);
     //return this.http.get<UserOptions>(AppSettings.API_ENDPOINT_USER_ME);
   }
   logout(): void {
-    /*  this.store$.dispatch(new UserActions.Logout()); */
+    /*  this.store$.dispatch(new UserActions.Logout());
   }
-  public updateProfile(profile: any /* User */): Observable<any /* User */> {
+  public updateProfile(profile: any /* User ): Observable<any /* User > {
     /*if (Math.random() > 0.5) {
       return this.http.put<TokenResponse>(AppSettings.API_ENDPOINT_USER_ME, profile);
-    }*/
+    }
     this.mockUser = { ...profile };
-    return of(this.mockUser as any /* User */);
+    return of(this.mockUser as any /* User );
   }
-  public signupProfile(profile: any /* UserOptions */): Observable<boolean> {
+  public signupProfile(profile: any /* UserOptions ): Observable<boolean> {
     return this.http.post<boolean>(
       AppSettings.API_ENDPOINT_USER_CREATE,
       profile
@@ -166,5 +180,5 @@ export class ProfileService {
       AppSettings.API_ENDPOINT_CONFIRM_USER,
       uidAndHash
     );
-  }
+  }*/
 }
