@@ -1,5 +1,56 @@
+<main class="company" *ngIf="identity.userRol == 'company'">
+    <section class="container datos" >
+        <div>
+            <img src="assets/img/main.jpg" width="100px" height="100px"><br>
+           {{identity.uid}}
+        </div>
+        <div>
+            Nombre: {{identity.nameCompany}} <br>
+            Razón Social: {{identity.razonSocial}}<br>
+            CIF: {{identity.CIF}}<br>
+            Dirección: {{identity.address}}
+        </div>
+        <div>
+            Nombre: {{identity.name}} {{identity.surname}}<br>
+            Teléfono: {{identity.phone}}<br>
+            Email: {{identity.email}} <br>
+        </div>
+        <a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+    </section>
+    <section class="container experiencia">
+        <h2>Ofertas</h2>
+        <a [routerLink]="['/admin/profile-experience']">añadir nueva +</a>
+        <table>
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Puesto</th>
+                <th>Empresa</th>
+                <th>Familia</th>
+                <th>Fecha</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let key of keys_offers">
+            <tr>
+                <td>{{identity.offers.entities[key].oid}}</td>
+                <td>{{identity.offers.entities[key].position}}</td>
+                <td>{{identity.offers.entities[key].company}}</td>
+                <td>{{identity.offers.entities[key].family}}</td>
+                <td>{{identity.offers.entities[key].date}}</td>
+                <td><a >editar</a></td>
+                <td><button (click)='removeOffer(identity.offers.entities[key].oid)'>borrar</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
 
-<section class="container datos">
+<!--------------------------------------------------------------
+ESTUDIANTE
+--------------------------------------------------------------->
+<main *ngIf="identity.userRol == 'student'">
+<section class="container datos" >
     <div>
         <img src="assets/img/main.jpg" width="100px">
         <span>{{identity.name}} {{identity.surname}}</span>
@@ -17,11 +68,15 @@
     <div>
         Otras competencias: {{identity.other}}
     </div>
+    <a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+
 </section>
-<a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+
+
 
 <section class="container formacion">
     <h2>Formación Académica</h2>
+    <a [routerLink]="['/admin/profile-studies']">añadir nuevo +</a>
     <table>
         <thead>
             <tr>
@@ -30,6 +85,7 @@
                 <th>Centro</th>
                 <th>Fecha</th>
                 <th>Certificado</th>
+                <th colspan="2">Acciones</th>
             </tr>
         </thead>
         <tbody *ngFor="let key of keys_studies">
@@ -39,6 +95,8 @@
                 <td>{{identity.studies.entities[key].institution}}</td>
                 <td>{{identity.studies.entities[key].date}}</td>
                 <td>{{identity.studies.entities[key].certificate}}</td>
+                <td><a [routerLink]="['/admin/profile-studies']">editar</a></td>
+                <td><button (click)='removeStudie(identity.studies.entities[key].sid)'>borrar</button></td>
             </tr>
         </tbody>
     </table>
@@ -46,12 +104,14 @@
 
 <section class="container experiencia">
     <h2>Experiencia Laboral</h2>
+    <a [routerLink]="['/admin/profile-experience']">añadir nuevo +</a>
     <table>
         <thead>
         <tr>
             <th>Empresa</th>
             <th>Puesto</th>
             <th>Fechas</th>
+            <th colspan="2">Acciones</th>
         </tr>
         </thead>
         <tbody *ngFor="let key of keys_experiences">
@@ -59,19 +119,24 @@
             <td>{{identity.experiences.entities[key].company}}</td>
             <td>{{identity.experiences.entities[key].position}}</td>
             <td>{{identity.experiences.entities[key].date}}</td>
+            <td><a [routerLink]="['/admin/profile-experience']">editar</a></td>
+            <td><button (click)='removeExperience(identity.experiences.entities[key].eid)'>borrar</button></td>
         </tr>
         </tbody>
     </table>
 </section>
 
-<section class="container experiencia">
+<section class="container idiomas">
     <h2>Idiomas</h2>
+    <a [routerLink]="['/admin/profile-language']">añadir nuevo +</a>
+
     <table>
         <thead>
         <tr>
             <th>Empresa</th>
             <th>Puesto</th>
             <th>Fechas</th>
+            <th colspan="2">Acciones</th>
         </tr>
         </thead>
         <tbody *ngFor="let key of keys_languages">
@@ -79,7 +144,10 @@
             <td>{{identity.languages.entities[key].level}}</td>
             <td>{{identity.languages.entities[key].name}}</td>
             <td>{{identity.languages.entities[key].date}}</td>
+            <td><a [routerLink]="['/admin/profile-language']">editar</a></td>
+            <td><button (click)='removeLanguage(identity.languages.entities[key].lid)'>borrar</button></td>
         </tr>
         </tbody>
     </table>
 </section>
+</main>

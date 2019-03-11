@@ -5,7 +5,7 @@
   font-size: 1rem;
 }
 body{
-  max-width: 980px;
+  max-width: 1200px;
   margin: 0px auto;
 }
 header{
@@ -14,6 +14,7 @@ header{
 section{
   margin-bottom: 5px;
 }
+div{display: flex}
 
 h1{font-size: 3rem}
 h2{font-size: 2rem;margin-bottom: 0}
@@ -23,27 +24,53 @@ h2{font-size: 2rem;margin-bottom: 0}
   justify-content: space-between;
 }
 img{display: block}
+section img{height: 100px}
 table{
+  min-width: 600px;
+  text-align: center;
+  margin: 20px auto;
+}
+.formacion table{
   width: 100%;
-  max-width: 980px;
+  max-width: 680px;
   text-align: center;
   margin: 20px auto;
 }
 th,td{padding: 15px}
 th{background: #ccc;color:#000}
+
+label{
+  font-weight: 600;
+}
 input{
   display: block;
-  width: 100%;
+  width: 200px;
   max-width: 400px;
+  margin: 5px;
+}
+textarea{
+  width: 100%;
   margin-bottom: 5px;
 }
 select{
-  display: block;
-  width: 100%;
-  max-width: 400px;
+  width: 200px;
   margin-bottom: 5px;
 }
-.formulario-datos{
-  min-width: 60%;
+.form-grupo{
+  display: flex;
+  align-items: center;
 }
-
+.formulario-datos{
+  width: 80%;
+}
+.editar-formacion, .editar-experiencia, .editar-idiomas{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+.avatar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}

@@ -1,0 +1,96 @@
+<h2>Editar Datos Personales</h2>
+<hr>
+<section class="container editar-datos">
+  <div class="avatar">
+      <img src="assets/img/main.jpg" width="100px">
+      <span>
+        <a [routerLink]="['/admin/profile']">{{identity.name}} {{identity.surname}}</a>
+      </span>
+  </div>
+  <div class="formulario-datos">
+    <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="submit()">
+      <div class="form-grupo">
+        <label>Nombre</label>
+        <input id="name" type="text" formControlName="name" placeholder="{{identity.name}}" value="{{identity.name}}" >
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Es obligatorio
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Mínimo 3 caracteres
+          </div>
+        </div>
+
+        <label>Apellidos</label>
+        <input id="surname" type="text" formControlName="surname" placeholder="{{identity.surname}}" value="{{identity.surname}}" >
+        <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger">
+
+          <div *ngIf="surname.errors.required">
+           Es obligatorio
+          </div>
+          <div *ngIf="surname.errors.minlength">
+            Mínimo 3 caracteres
+          </div>
+        </div>
+      </div>
+      <div class="form-grupo">
+        <label>Fecha de nacimiento</label>
+        <input type="date">
+      </div>
+
+      <div class="form-grupo">
+        <label>Imagen de perfil</label>
+        <input type="file">
+      </div>
+
+      <div class="form-grupo">
+        <label>Teléfono</label>
+        <input type="tel">
+
+        <label>Teléfono 2</label>
+        <input type="tel">
+      </div>
+
+      <div class="form-grupo">
+        <label>Tipo de documento</label>
+        <select>
+          <option>NIF/NIE</option>
+          <option>Otro</option>
+          <option>Pasaporte</option>
+        </select>
+        <label>Número de Identidad</label>
+        <input type="text">
+      </div>
+      <div class="form-grupo">
+        <label>Dirección</label>
+        <input type="text"  placeholder="{{identity.address}}" value="{{identity.address}}" >
+        <label>Provicia</label>
+        <input type="text"  placeholder="{{identity.provicia}}" value="{{identity.provicia}}" >
+        <label>Municipio</label>
+        <input type="text"  placeholder="{{identity.municipio}}" value="{{identity.municipio}}" >
+      </div>
+
+      <div class="form-grupo">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="{{identity.email}}" value="{{identity.email}}" >
+      </div>
+
+      <div class="form-grupo">
+        <label>Permiso de Conducir</label>
+        <input type="text" placeholder="{{identity.permiso}}" value="{{identity.permiso}}" >
+      </div>
+
+      <label>Sobre mí</label>
+      <textarea [froalaEditor]></textarea>
+
+      <label>Otras competencias</label>
+      <textarea [froalaEditor]></textarea>
+
+      <input type="submit" value="guardar" [disabled]="!formDatos.valid">
+
+    </form>
+    <p>Form status: {{formDatos.status}}</p>
+  </div>
+</section>
+
+

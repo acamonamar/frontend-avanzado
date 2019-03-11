@@ -1,0 +1,21 @@
+<h2>Editar Formación Académica</h2>
+<hr>
+<section class="container editar-formacion">
+  <div class="avatar">
+    <img src="assets/img/main.jpg" width="100px">
+    <span>
+      <a [routerLink]="['/admin/profile']">{{identity.name}} {{identity.surname}}</a>
+    </span>
+  </div>
+
+  <form id="formFormacion" [formGroup]="formFormacion" (ngSubmit)="submit()">
+    <select id="titulo_academico" formControlName="titulo_academico" >
+      <option value="universidad">Título universitario</option>
+      <option value="ciclo">Ciclo Formativo</option>
+      <option value="otro">Otro título</option>
+    </select>
+    <p *ngIf="titulo_academico.value == 'universidad'">1- Haz seleccionado la opción uni</p>
+    <p *ngIf="titulo_academico.value == 'ciclo'">2- Haz seleccionado la opción ciclo</p>
+    <p *ngIf="titulo_academico.value == 'otro'">3- Haz seleccionado la opción otro</p>
+  </form>
+</section>
