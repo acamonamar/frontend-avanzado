@@ -68,7 +68,7 @@ ESTUDIANTE
     <div>
         Otras competencias: {{identity.other}}
     </div>
-    <a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+    <a routerLink="/admin/profile/data/{{identity.uid}}">Modificar datos</a>
 
 </section>
 
@@ -76,7 +76,7 @@ ESTUDIANTE
 
 <section class="container formacion">
     <h2>Formación Académica</h2>
-    <a [routerLink]="['/admin/profile-studies']">añadir nuevo +</a>
+    <a [routerLink]="['/admin/profile/studies']">añadir nuevo +</a>
     <table>
         <thead>
             <tr>
@@ -95,7 +95,7 @@ ESTUDIANTE
                 <td>{{identity.studies.entities[key].institution}}</td>
                 <td>{{identity.studies.entities[key].date}}</td>
                 <td>{{identity.studies.entities[key].certificate}}</td>
-                <td><a [routerLink]="['/admin/profile-studies']">editar</a></td>
+                <td><a routerLink="/admin/profile/studies/{{identity.studies.entities[key].sid}}">editar</a></td>
                 <td><button (click)='removeStudie(identity.studies.entities[key].sid)'>borrar</button></td>
             </tr>
         </tbody>
@@ -119,7 +119,7 @@ ESTUDIANTE
             <td>{{identity.experiences.entities[key].company}}</td>
             <td>{{identity.experiences.entities[key].position}}</td>
             <td>{{identity.experiences.entities[key].date}}</td>
-            <td><a [routerLink]="['/admin/profile-experience']">editar</a></td>
+            <td><a routerLink="/admin/profile/experience/{{identity.experiences.entities[key].eid}}">editar</a></td>
             <td><button (click)='removeExperience(identity.experiences.entities[key].eid)'>borrar</button></td>
         </tr>
         </tbody>
@@ -144,7 +144,7 @@ ESTUDIANTE
             <td>{{identity.languages.entities[key].level}}</td>
             <td>{{identity.languages.entities[key].name}}</td>
             <td>{{identity.languages.entities[key].date}}</td>
-            <td><a [routerLink]="['/admin/profile-language']">editar</a></td>
+            <td><a routerLink="/admin/profile/language/{{identity.languages.entities[key].lid}}">editar</a></td>
             <td><button (click)='removeLanguage(identity.languages.entities[key].lid)'>borrar</button></td>
         </tr>
         </tbody>

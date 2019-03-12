@@ -1,7 +1,9 @@
-export class UserDB {
-    constructor(
-        public _id: number,
-        public email: string,
-        public passwd: string
-    ) { }
+import {Address} from './address';
+
+export class User {
+    id: number;
+    name: string;
+    phone: string;
+    email: string;
+    address: Address = new Address();
 }

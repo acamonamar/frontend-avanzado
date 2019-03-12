@@ -128,7 +128,6 @@ export class ProfileService {
 
   getIdentity() {
     const identity = JSON.parse(localStorage.getItem('identity'));
-    console.log('Dentro de getIdentity' + identity);
     if (identity !== 'undefined') {
       this.identity = identity;
     } else {
@@ -136,6 +135,16 @@ export class ProfileService {
     }
     return this.identity;
   }
+
+  /*getUser(id){
+    return this.http.get(this.getUserUrl(id))
+        .map(res => res.json());
+  }
+
+  private getUserUrl(id){
+    return this.url + "/" + id;
+  }*/
+
   /*
   loadProfile(): Observable<any /* UserOptions > {
     return of(this.mockUser as any);

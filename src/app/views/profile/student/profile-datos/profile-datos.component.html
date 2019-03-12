@@ -9,7 +9,7 @@
   </div>
   <div class="formulario-datos">
     <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="submit()">
-      <div class="form-grupo">
+      <div >
         <label>Nombre</label>
         <input id="name" type="text" formControlName="name" placeholder="{{identity.name}}" value="{{identity.name}}" >
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
@@ -24,7 +24,6 @@
         <label>Apellidos</label>
         <input id="surname" type="text" formControlName="surname" placeholder="{{identity.surname}}" value="{{identity.surname}}" >
         <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger">
-
           <div *ngIf="surname.errors.required">
            Es obligatorio
           </div>
@@ -33,17 +32,17 @@
           </div>
         </div>
       </div>
-      <div class="form-grupo">
+      <div >
         <label>Fecha de nacimiento</label>
         <input type="date">
       </div>
 
-      <div class="form-grupo">
+      <div >
         <label>Imagen de perfil</label>
         <input type="file">
       </div>
 
-      <div class="form-grupo">
+      <div >
         <label>Teléfono</label>
         <input type="tel">
 
@@ -51,7 +50,7 @@
         <input type="tel">
       </div>
 
-      <div class="form-grupo">
+      <div >
         <label>Tipo de documento</label>
         <select>
           <option>NIF/NIE</option>
@@ -61,21 +60,21 @@
         <label>Número de Identidad</label>
         <input type="text">
       </div>
-      <div class="form-grupo">
+      <div formGroupName="address" >
         <label>Dirección</label>
-        <input type="text"  placeholder="{{identity.address}}" value="{{identity.address}}" >
+        <input formControlName="street" type="text"  placeholder="{{identity.address}}" value="{{identity.address}}" >
         <label>Provicia</label>
-        <input type="text"  placeholder="{{identity.provicia}}" value="{{identity.provicia}}" >
+        <input formControlName="zone" type="text"  placeholder="{{identity.provicia}}" value="{{identity.provicia}}" >
         <label>Municipio</label>
-        <input type="text"  placeholder="{{identity.municipio}}" value="{{identity.municipio}}" >
+        <input formControlName="city" type="text"  placeholder="{{identity.municipio}}" value="{{identity.municipio}}" >
       </div>
 
-      <div class="form-grupo">
+      <div >
         <label>Email</label>
         <input type="email" formControlName="email" placeholder="{{identity.email}}" value="{{identity.email}}" >
       </div>
 
-      <div class="form-grupo">
+      <div >
         <label>Permiso de Conducir</label>
         <input type="text" placeholder="{{identity.permiso}}" value="{{identity.permiso}}" >
       </div>

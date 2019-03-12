@@ -22,6 +22,7 @@ export class FakeBackendService implements InMemoryDbService {
                         {
                             uid: 0,
                             sid: 0,
+                            academic: 'ciclo',
                             level: 'Ciclo formativo',
                             title: 'Desarrollo de aplicaciones web',
                             institution: 'IES Politécnico Jesús Marin',
@@ -31,6 +32,7 @@ export class FakeBackendService implements InMemoryDbService {
                         {
                             uid: 0,
                             sid: 1,
+                            academic: 'ciclo',
                             level: 'Ciclo formativo',
                             title: 'Administracion de sistemas informaticos y redes',
                             institution: 'IES Politécnico Jesús Marin',
@@ -51,7 +53,7 @@ export class FakeBackendService implements InMemoryDbService {
                         },
                         {
                             uid: 0,
-                            eid: 0,
+                            eid: 1,
                             company: 'Indra',
                             position: 'engineer',
                             date: '1548320228'
@@ -193,13 +195,14 @@ export class FakeBackendService implements InMemoryDbService {
                         },
                         {
                             uid: 1,
-                            lid: 0,
+                            lid: 1,
                             level: '4',
                             name: 'French',
                             date: '1548320228'
                         },
                         {
                             uid: 1,
+                            id: 2,
                             level: '5',
                             name: 'Italiano',
                             date: '1548320228'

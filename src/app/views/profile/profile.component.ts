@@ -28,7 +28,6 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-
   removeOffer(id) {
     console.log('Eliminado oferta con id:' + id);
     let i: number;

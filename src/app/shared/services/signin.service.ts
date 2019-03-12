@@ -10,4 +10,5 @@ export class SigninService {
     getUser() {
         return this.http.get<any>(this.base_url + this.task_endpoint);
     }
+
 }

@@ -8,14 +8,56 @@
     </span>
   </div>
 
-  <form id="formFormacion" [formGroup]="formFormacion" (ngSubmit)="submit()">
-    <select id="titulo_academico" formControlName="titulo_academico" >
-      <option value="universidad">Título universitario</option>
-      <option value="ciclo">Ciclo Formativo</option>
-      <option value="otro">Otro título</option>
+  <select id="country" formControlName="country">
+    <option *ngFor="let c of countries" [ngValue]="c">{{ c }}</option>
+  </select>
+
+  <form id="formFormacion" class="form-grupo" [formGroup]="formFormacion" (ngSubmit)="submit()" >
+    <select formControlName="titulo_academico" >
+      <option value="{{identity.studies.entities[myKey].level}}" selected="selected">{{identity.studies.entities[myKey].level}}</option>
+      <option value="" >Otros</option>
+      <option value="" >Universidad</option>
     </select>
-    <p *ngIf="titulo_academico.value == 'universidad'">1- Haz seleccionado la opción uni</p>
-    <p *ngIf="titulo_academico.value == 'ciclo'">2- Haz seleccionado la opción ciclo</p>
-    <p *ngIf="titulo_academico.value == 'otro'">3- Haz seleccionado la opción otro</p>
+    <div [ngSwitch] = "identity.studies.entities[myKey].academic">
+      <div id="universitario" *ngSwitchCase="'universitario'">
+        <label>Nombre de centro</label>
+        <input type="text" value="{{identity.studies.entities[myKey].institution}}">
+        <label>Título</label>
+        <input type="text" value="{{identity.studies.entities[myKey].title}}">
+        <label>Fecha de título</label>
+        <input type="date" value="{{identity.studies.entities[myKey].fecha}}">
+        <label>Formación</label>
+        <input type="text" value="Formación">
+        <label>Certificado</label>
+        <input type="file" value="centro">
+      </div>
+      <div id="ciclo" *ngIf="'ciclo'">
+        <label>Centro Educativo</label>
+        <select formControlName="centro_educativo" >
+          <option value="centro1" selected="selected">Centro 1</option>
+          <option value="centro2">Centro 2</option>
+          <option value="centro3">Centro 3</option>
+        </select>
+        <label>Familia</label>
+        <select formControlName="familia" >
+          <option value="1" selected="selected">familia 1</option>
+          <option value="2">familia 2</option>
+          <option value="3">familia 3</option>
+        </select>
+        <label>Fecha de título</label>
+        <select formControlName="grado" >
+          <option value="grado_superior" selected="selected">Grado Superior</option>
+          <option value="grado_medio">Grado Medio</option>
+          <option value="fp_basica">FP Básica</option>
+        </select>
+        <label>Fecha de título</label>
+        <input type="date" value="Fecha">
+          <label><input type="checkbox" name="formacion_dual"> Formación dual</label><br>
+          <label><input type="checkbox" name="formacion_bilingue"> Formación bilingüe</label>
+        <label>Certificado</label>
+        <input type="file" value="centro">
+      </div>
+    </div>
   </form>
+
 </section>

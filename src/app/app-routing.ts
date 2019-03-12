@@ -1,4 +1,4 @@
-import {  Routes } from '@angular/router';
+import { Routes } from '@angular/router';
 import {ProfileFormacionComponent} from './views/profile/student/profile-formacion/profile-formacion.component';
 /* import { AdminLayoutComponent } from './shared/components/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
@@ -52,22 +52,22 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Offers', breadcrumb: 'Offers' }
       },
       {
-        path: 'profile-data',
+        path: 'profile/data/:id',
         loadChildren: './views/profile/student/profile-datos/profile-datos.module#ProfileDatosModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
-        path: 'profile-studies',
+        path: 'profile/studies/:id',
         loadChildren: './views/profile/student/profile-formacion/profile-formacion.module#ProfileFormacionModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
         {
-            path: 'profile-experience',
+            path: 'profile/experience/:id',
             loadChildren: './views/profile/student/profile-experiencia/profile-experiencia.module#ProfileExperienciaModule',
             data: { title: 'Material', breadcrumb: 'MATERIAL' }
         },
         {
-            path: 'profile-language',
+            path: 'profile/language/:id',
             loadChildren: './views/profile/student/profile-idiomas/profile-idiomas.module#ProfileIdiomasModule',
             data: { title: 'Material', breadcrumb: 'MATERIAL' }
         },

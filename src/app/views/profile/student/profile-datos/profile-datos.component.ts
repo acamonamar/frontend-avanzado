@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {FormGroup, FormBuilder, Validators, Form} from '@angular/forms';
 
 import { ProfileService } from '../../../../shared/services/profile.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -31,6 +31,11 @@ export class ProfileDatosComponent implements OnInit {
       'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
       'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
       'email': ['', [Validators.required, Validators.email]],
+      'address': this.formBuilder.group({
+          'street': ['' , [Validators.required]],
+              'zone': ['', [Validators.required]],
+              'city': ['', [Validators.required]]
+      })
     });
   }
 

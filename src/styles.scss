@@ -14,15 +14,10 @@ header{
 section{
   margin-bottom: 5px;
 }
-div{display: flex}
-
+div{display: flex;flex-wrap: wrap;align-items: center}
 h1{font-size: 3rem}
 h2{font-size: 2rem;margin-bottom: 0}
-.datos{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+
 img{display: block}
 section img{height: 100px}
 table{
@@ -41,36 +36,42 @@ th{background: #ccc;color:#000}
 
 label{
   font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
 }
+
 input{
   display: block;
   width: 200px;
   max-width: 400px;
   margin: 5px;
 }
+label input{width: 40px}
 textarea{
+  display: block;
   width: 100%;
   margin-bottom: 5px;
 }
 select{
+  display: block;
   width: 200px;
   margin-bottom: 5px;
 }
-.form-grupo{
+a{ padding: 10px 15px}
+
+.dashboard{
   display: flex;
-  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 .formulario-datos{
   width: 80%;
 }
-.editar-formacion, .editar-experiencia, .editar-idiomas{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: flex-start;
-}
+
 .avatar{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  max-width: 120px;
 }
