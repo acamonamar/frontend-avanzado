@@ -22,7 +22,7 @@ export class ForgotPasswordComponent implements OnInit {
       private _router: Router,
       private _signinservice: SigninService
   ) {
-    this.identidad = this._signinservice.getUser();
+    this.identidad = this._signinservice.getUsers();
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   submit(){
-    this._signinservice.getUser().subscribe(
+    this._signinservice.getUsers().subscribe(
         res => {
           console.log(res);
 

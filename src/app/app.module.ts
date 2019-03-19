@@ -10,7 +10,7 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 /* Componentes */
 import { AppComponent } from './app.component';
 
-import { FakeBackendService } from './shared/services/fake-backend.service';
+import { FakeBackendService } from './shared/inmemory-db/fake-backend.service';
 import { AppService } from './app.service';
 import { SigninService } from './shared/services/signin.service';
 
@@ -26,7 +26,7 @@ import { SigninService } from './shared/services/signin.service';
       FormsModule,
     ReactiveFormsModule,
       HttpClientModule,
-    InMemoryWebApiModule.forRoot(FakeBackendService),
+    InMemoryWebApiModule.forRoot(FakeBackendService, { dataEncapsulation: false }),
     RouterModule.forRoot(rootRouterConfig, { enableTracing: true }),
   ],
   providers: [

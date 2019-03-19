@@ -1,6 +1,16 @@
 export class Address {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
+
+    public street: string;
+    public provincia: string;
+    public municipio: string;
+
+    constructor(
+        street: string,
+        provincia: string,
+        municipio: string,
+    ) {
+        this.street = street;
+        this.provincia = provincia;
+        this.municipio = municipio;
+    }
 }

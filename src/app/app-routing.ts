@@ -42,7 +42,7 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Favorites', breadcrumb: 'FAVORITES' }
       },
       {
-        path: 'profile',
+        path: 'profile/:uid',
         loadChildren: './views/profile/profile.module#ProfileModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },

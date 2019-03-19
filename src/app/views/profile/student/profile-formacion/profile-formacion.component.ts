@@ -13,7 +13,6 @@ import {identity} from 'rxjs';
 export class ProfileFormacionComponent implements OnInit {
 
   public identity;
-  public keys_studies: String[];
   public formFormacion: FormGroup;
 
   public title;
@@ -28,35 +27,38 @@ export class ProfileFormacionComponent implements OnInit {
       private _profileservice: ProfileService
   ) {}
   ngOnInit() {
-    // this.getProfile();
+    // Obtengo perfil;
     this.identity = this._profileservice.getIdentity();
-    this.keys_studies = Object.keys(this.identity.studies.entities);
+    // Validación Formulario
     this.formFormacion = this.formBuilder.group({
       'titulo_academico': ['', [Validators.required]],
       'centro_educativo': ['', [Validators.required]],
       'familia': ['', [Validators.required]],
       'grado': ['', [Validators.required]],
     });
+    // Pruebas
     console.log(this.formFormacion.value);
     console.log('Formacion' + this.identity.studies.entities[0].title);
-     const id = this._route.params.subscribe(params => {
+
+    // obtengo el ID del usuario por la ruta
+    const id = this._route.params.subscribe(params => {
        this.myKey = params['id'];
-  console.log('Este es el ID' + this.myKey);
-      this.title = id ? 'Edit User' : 'New User';
-
-      if (!id) { return; }
-
-      this._profileservice.getIdentity()
+       console.log('Este es el ID' + this.myKey);
+       this.title = id ? 'Edit User' : 'New User';
+       if (!id) { return; }
+       this._profileservice.getIdentity()
           .subscribe(
               response => {
                 if (response.status === 404) {
                   this._router.navigate(['NotFound']);
                 }
               });
-    });
+        });
   }
 
+  /*
   get titulo() { return this.formFormacion.get('titulo_academico').valueChanges
+
       .subscribe(value => {
         console.log(value);
         if (value === 'universidad') {
@@ -72,5 +74,5 @@ export class ProfileFormacionComponent implements OnInit {
           // this.formFormacion.get('numero_contacto').setValidators(validators);
         }
       });
-  }
+  }*/
 }

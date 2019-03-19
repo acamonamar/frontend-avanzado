@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SigninService } from '../../shared/services/signin.service';
 import { ProfileService } from '../../shared/services/profile.service';
+import {User} from '../../shared/models/user';
 
 @Component({
   selector: 'app-signin',
@@ -11,7 +12,9 @@ import { ProfileService } from '../../shared/services/profile.service';
   providers: [SigninService, ProfileService]
 })
 export class SigninComponent implements OnInit {
-  public title: string;
+    @Output() user: User;
+
+    public title: string;
   public formLogin: FormGroup;
   public identidad;
   public login;
@@ -24,7 +27,7 @@ export class SigninComponent implements OnInit {
       private _signinservice: SigninService,
       private _profileservice: ProfileService
   ) {
-    this.identidad = this._signinservice.getUser();
+    this.identidad = this._signinservice.getUsers();
   }
 
   ngOnInit() {
@@ -34,9 +37,11 @@ export class SigninComponent implements OnInit {
       'password': ['', Validators.required]
     });
     console.log(this._profileservice.getIdentity());
+      console.log('Esto recibimos' + this.identidad);
   }
   submit() {
-    this._signinservice.getUser().subscribe(
+      console.log('Esto con el login' + this.identidad);
+    this._signinservice.getUsers().subscribe(
         res => {
           console.log(res);
 
@@ -53,6 +58,7 @@ export class SigninComponent implements OnInit {
               console.log('OBJETO' + this.login[i]);
               localStorage.setItem('identity', JSON.stringify(this.login[i]));
                 this._router.navigateByUrl ('/admin/dashboard');
+                this.user = this.login[i];
               /*let u: User = {user: username, passwd: password};
               this._userService.setUserLoggedIn(u);*/
               encontrado = 1;

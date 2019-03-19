@@ -2,9 +2,9 @@
   Bienvenido {{identity.userName}}!
 </h2>
 <section class="container dashboard">
-  <h3><a [routerLink]="['/admin/profile']">Perfil</a></h3>
-  <h3><a [routerLink]="['/admin/favorites']">Favoritos</a></h3>
-  <h3><a [routerLink]="['/admin/offers']">Ofertas</a></h3>
+  <h3><a routerLink="/admin/profile/{{identity.uid}}">Perfil</a></h3>
+  <h3><a routerLink="/admin/favorites">Favoritos</a></h3>
+  <h3><a routerLink="/admin/offers">Ofertas</a></h3>
 </section>
 
 
