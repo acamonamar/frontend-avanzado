@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import {  Routes } from '@angular/router';
 import {ProfileFormacionComponent} from './views/profile/student/profile-formacion/profile-formacion.component';
 /* import { AdminLayoutComponent } from './shared/components/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';

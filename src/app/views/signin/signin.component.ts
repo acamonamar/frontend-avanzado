@@ -12,8 +12,7 @@ import {User} from '../../shared/models/user';
   providers: [SigninService, ProfileService]
 })
 export class SigninComponent implements OnInit {
-    @Output() user: User;
-
+    user: User;
     public title: string;
   public formLogin: FormGroup;
   public identidad;
@@ -36,14 +35,11 @@ export class SigninComponent implements OnInit {
       'email': ['', [Validators.required, Validators.email]],
       'password': ['', Validators.required]
     });
-    console.log(this._profileservice.getIdentity());
-      console.log('Esto recibimos' + this.identidad);
   }
   submit() {
-      console.log('Esto con el login' + this.identidad);
     this._signinservice.getUsers().subscribe(
         res => {
-          console.log(res);
+          console.log('Repuesta del subscribe: '+ res);
 
           this.login = res;
           // console.log(this.login[0].email);
@@ -53,12 +49,10 @@ export class SigninComponent implements OnInit {
           for ( i = 0; i < this.login.length; i++) {
             if ((this.login[i].email === this.formLogin.value.email )
                 && (this.login[i].password === this.formLogin.value.password )) {
-              console.log(this.login[i].email);
-              console.log(this.login[i].password);
-              console.log('OBJETO' + this.login[i]);
-              localStorage.setItem('identity', JSON.stringify(this.login[i]));
+                localStorage.setItem('identity', JSON.stringify(this.login[i]));
                 this._router.navigateByUrl ('/admin/dashboard');
                 this.user = this.login[i];
+                console.log('Este usuario... ' + this.user);
               /*let u: User = {user: username, passwd: password};
               this._userService.setUserLoggedIn(u);*/
               encontrado = 1;

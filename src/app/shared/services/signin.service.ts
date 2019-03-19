@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from '../models/user';
-import { FakeBackendService } from '../inmemory-db/fake-backend.service';
 import { Observable } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
+import 'rxjs/add/operator/toPromise';
 
 @Injectable({ providedIn: 'root' })
 export class SigninService {
-    base_url = 'http://localhost:4200/api/users';
-    private handleError: string;
+    base_url = 'api/users';
     constructor ( private http: HttpClient ) { }
 
     /*getUsers() {
@@ -28,10 +25,12 @@ export class SigninService {
         const url = `${this.base_url}/${uid}`;
         return this.http.get<User>(url);
     }
-    /*getUser(id: number): Promise<User> {
-        const url = `${this.base_url}/${id}`;
+    /*getUser(uid: number): Promise<User> {
+        const url = `${this.base_url}/${uid}`;
         return this.http.get(url)
             .toPromise()
             .then(response => response as User);
     }*/
+
+
 }

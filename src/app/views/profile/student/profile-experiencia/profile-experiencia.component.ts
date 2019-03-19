@@ -1,22 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import {ProfileService} from '../../../../shared/services/profile.service';
+import { Component, OnInit, Input } from '@angular/core';
+import { User } from '../../../../shared/models/user';
+import { SigninService } from '../../../../shared/services/signin.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile-experiencia',
   templateUrl: './profile-experiencia.component.html',
   styleUrls: ['./profile-experiencia.component.scss'],
-  providers: [ProfileService]
 })
 export class ProfileExperienciaComponent implements OnInit {
 
   public identity;
-  public keys_experiences: String[];
+  @Input() user: User;
 
-  constructor(private _profileservice: ProfileService
+  constructor(
+      private _route: ActivatedRoute,
+      private _signinservice: SigninService,
+
   ) {}
-  ngOnInit() {
-    // this.getProfile();
-    this.identity = this._profileservice.getIdentity();
-    this.keys_experiences = Object.keys(this.identity.experiences.entities);
+  ngOnInit(): void {
+    this.getHero();
+  }
+
+  getHero(): void {
+    const id = +this._route.snapshot.paramMap.get('id');
+    this._signinservice.getUser(id)
+        .subscribe(user => this.user = user);
   }
 }

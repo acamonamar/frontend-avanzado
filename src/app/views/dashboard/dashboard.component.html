@@ -1,10 +1,23 @@
-<h2>
+<!--h2>
   Bienvenido {{identity.userName}}!
 </h2>
 <section class="container dashboard">
   <h3><a routerLink="/admin/profile/{{identity.uid}}">Perfil</a></h3>
   <h3><a routerLink="/admin/favorites">Favoritos</a></h3>
   <h3><a routerLink="/admin/offers">Ofertas</a></h3>
-</section>
+</section-->
+
+<h3>Top Heroes</h3>
+<div class="grid grid-pad">
+  <a *ngFor="let user of users" [routerLink]="['/admin/profile', user.uid]" class="col-1-4">
+    <div class="module hero">
+      <h4>{{user.name}}</h4>
+      <!--ng-container *ngFor="let power of hero?.powers; let isLast=last">
+        {{ power }}<ng-container *ngIf="!isLast">, </ng-container>
+      </ng-container-->
+    </div>
+  </a>
+</div>
+
 
 

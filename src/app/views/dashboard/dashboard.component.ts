@@ -7,11 +7,18 @@ import { User }               from '../../shared/models/user';
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [ProfileService, SigninService]
 })
 export class DashboardComponent implements OnInit {
-  public identity;
-  users: User[];
+  users: User[] = [];
+
+  constructor(private _signinservice: SigninService) {
+  }
+
+  ngOnInit(): void {
+    this._signinservice.getUsers().subscribe(users => this.users = users);
+  }
+  /*public identity;
+  users: User[] = [];
 
   constructor(
       private _profileservice: ProfileService,
@@ -26,6 +33,6 @@ export class DashboardComponent implements OnInit {
   getUsers(): void {
     this._signinservice.getUsers()
         .subscribe(users => this.users = users);
-  }
+  }*/
 
 }
