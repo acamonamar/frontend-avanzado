@@ -1,5 +1,5 @@
 export class UserDB {
-  public usersis = [
+  public users = [
     {
       _id: '5a7b73f76bed15c94d1e46d4',
       index: 0,

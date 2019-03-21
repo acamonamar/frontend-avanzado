@@ -1,5 +1,4 @@
 import {  Routes } from '@angular/router';
-import {ProfileFormacionComponent} from './views/profile/student/profile-formacion/profile-formacion.component';
 /* import { AdminLayoutComponent } from './shared/components/layouts/admin-layout/admin-layout.component';
 import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
 import { AuthGuard } from './shared/services/auth/auth.guard'; */
@@ -17,8 +16,7 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren:
-      './views/forgot-password/forgot-password.module#ForgotPasswordModule',
+    loadChildren: './views/forgot-password/forgot-password.module#ForgotPasswordModule',
     data: { title: 'Forgot Password' }
   },
   {
@@ -47,31 +45,20 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
-        path: 'offers',
-        loadChildren: './views/offers.module#OffersModule',
-        data: { title: 'Offers', breadcrumb: 'Offers' }
-      },
-      {
         path: 'profile/data/:id',
-        loadChildren: './views/profile/student/profile-datos/profile-datos.module#ProfileDatosModule',
+        loadChildren: './views/profile/forms/data/profile-datos.module#ProfileDatosModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
-        path: 'profile/studies/:id',
-        loadChildren: './views/profile/student/profile-formacion/profile-formacion.module#ProfileFormacionModule',
+        path: 'profile/:id/studies/:sid',
+        loadChildren: './views/profile/forms/studies/profile-formacion.module#ProfileFormacionModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
-        {
-            path: 'profile/experience/:id',
-            loadChildren: './views/profile/student/profile-experiencia/profile-experiencia.module#ProfileExperienciaModule',
-            data: { title: 'Material', breadcrumb: 'MATERIAL' }
-        },
-        {
-            path: 'profile/language/:id',
-            loadChildren: './views/profile/student/profile-idiomas/profile-idiomas.module#ProfileIdiomasModule',
-            data: { title: 'Material', breadcrumb: 'MATERIAL' }
-        },
-
+      {
+        path: 'offers',
+        loadChildren: './views/offers/offers.module#OffersModule',
+        data: { title: 'Offers', breadcrumb: 'Offers' }
+      }
     ]
   },
   {

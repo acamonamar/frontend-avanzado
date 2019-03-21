@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
-import {SigninService} from '../../shared/services/signin.service';
+import {UserService} from '../../shared/services/user.service';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.scss'],
-  providers: [SigninService]
+  providers: [UserService]
 })
 export class ForgotPasswordComponent implements OnInit {
 
@@ -20,9 +20,9 @@ export class ForgotPasswordComponent implements OnInit {
       private formBuilder: FormBuilder,
       private _route: ActivatedRoute,
       private _router: Router,
-      private _signinservice: SigninService
+      private _userservice: UserService
   ) {
-    this.identidad = this._signinservice.getUsers();
+    this.identidad = this._userservice.getUsers();
   }
 
   ngOnInit() {
@@ -34,7 +34,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   submit(){
-    this._signinservice.getUsers().subscribe(
+    this._userservice.getUsers().subscribe(
         res => {
           console.log(res);
 
@@ -44,10 +44,10 @@ export class ForgotPasswordComponent implements OnInit {
 
           let i: number;
           for ( i = 0; i < this.login.length; i++) {
-            if (this.login[i].user === this.formLogin.value.email ){
-              console.log(this.login[i].user);
+            if (this.login[i].email === this.formLogin.value.email ){
+              console.log(this.login[i].name);
               console.log(this.login[i].password);
-              alert('mensaje enviado a' + this.login[i].user + '.');
+              alert('mensaje enviado a ' + this.login[i].email + '.');
               this._router.navigateByUrl ('/signin');
             }
           }

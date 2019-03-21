@@ -10,8 +10,8 @@ import { SigninComponent } from './signin.component';
   imports: [
     CommonModule,
     SigninRoutingModule,
-      ReactiveFormsModule,
-      FormsModule
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class SigninModule { }

@@ -1,10 +1,10 @@
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-export class FakeBackendService implements InMemoryDbService {
 
+export class FakeBackendService implements InMemoryDbService {
     createDb() {
         const users = [
             {
-                uid: 0,
+                id: 0,
                 userName: 'acarmonamar',
                 name: 'Alejandro',
                 surname: 'Carmona Martos',
@@ -12,6 +12,11 @@ export class FakeBackendService implements InMemoryDbService {
                 email: 'jandrocm@gmail.com',
                 password: '1234',
                 userRol: 'student',
+                documento_identidad: 'otro',
+                numero_documento: '44365112k',
+                permisos: 'B1',
+                sobre_mi: 'LOREM IPSUM',
+                otras_competencias:'LOREM IPSUM',
                 address: [{
                     street: 'Urbanización las Areanas - 45',
                     provincia: 'Cádiz',
@@ -31,7 +36,7 @@ export class FakeBackendService implements InMemoryDbService {
                             certificado: true
                         }]
                     },
-                    {uid: 0, sid: 0, tipo_titulo: 'ciclo', formacion_universidad: null,
+                    {uid: 0, sid: 1, tipo_titulo: 'ciclo', formacion_universidad: null,
                         formacion_ciclo: [{
                             centro: 'IES Politécnico Jesús Marin',
                             familia: 'informatica',
@@ -45,9 +50,9 @@ export class FakeBackendService implements InMemoryDbService {
                     }],
                 languages: [
                     {uid: 0, lid: 0, idioma: 'Inglés', nivel: 'B2', fecha: '1548320228'},
-                    {uid: 0, lid: 0, idioma: 'Portugués', nivel: 'A2', fecha: '1548320228'}
-                    ]
-                }];
-        return {users: users};
+                    {uid: 0, lid: 1, idioma: 'Portugués', nivel: 'A2', fecha: '1548320228'}
+                ]
+            }];
+        return {users};
     }
 }

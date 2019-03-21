@@ -1,0 +1,107 @@
+<h2>Editar Datos Personales</h2>
+<hr>
+<div *ngIf="user">
+<section class="container editar-datos">
+  <div class="avatar">
+      <img src="assets/img/main.jpg" width="100px">
+      <span>
+        <a [routerLink]="['/admin/profile']">{{user.name}} {{user.surname}}</a>
+      </span>
+  </div>
+    <hr>
+
+    <div class="formulario-datos">
+    <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="submit()">
+      <div >
+        <label>Nombre</label>
+        <input id="name" type="text" formControlName="name" placeholder="{{user.name}}" value="{{user.name}}" >
+        <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
+          <div *ngIf="name.errors.required">
+            Es obligatorio
+          </div>
+          <div *ngIf="name.errors.minlength">
+            Mínimo 3 caracteres
+          </div>
+        </div>
+
+        <label>Apellidos</label>
+        <input id="surname" type="text" formControlName="surname" placeholder="{{user.surname}}" value="{{user.surname}}" >
+        <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger">
+          <div *ngIf="surname.errors.required">
+           Es obligatorio
+          </div>
+          <div *ngIf="surname.errors.minlength">
+            Mínimo 3 caracteres
+          </div>
+        </div>
+      </div>
+      <div >
+        <label>Fecha de nacimiento</label>
+        <input type="date">
+      </div>
+
+      <div >
+        <label>Imagen de perfil</label>
+        <input type="file">
+      </div>
+
+      <div >
+        <label>Teléfono</label>
+        <input type="tel"  placeholder="{{user.phone}}" value="{{user.phone}}">
+
+        <label>Teléfono 2</label>
+        <input type="tel">
+      </div>
+
+      <div >
+        <label>Tipo de documento</label>
+        <select *ngIf="user.documento_identidad === 'dni'">
+          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
+          <option>Otro</option>
+          <option>Pasaporte</option>
+        </select>
+        <select *ngIf="user.documento_identidad === 'otro'">
+          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
+          <option value="DNI">DNI</option>
+          <option value="Pasaporte">Pasaporte</option>
+        </select>
+        <select *ngIf="user.documento_identidad === 'pasaporte'">
+          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
+          <option value="DNI">DNI</option>
+          <option value="otro">Otro</option>
+        </select>
+        <label>Número de Identidad</label>
+        <input type="text" value="{{user.numero_documento}}">
+      </div>
+      <div formGroupName="address" >
+        <label>Dirección</label>
+        <input formControlName="street" type="text"  placeholder="{{user.address[0].street}}" value="{{user.address[0].street}}" >
+        <label>Provicia</label>
+        <input formControlName="zone" type="text"  placeholder="{{user.address[0].provincia}}" value="{{user.address[0].provincia}}" >
+        <label>Municipio</label>
+        <input formControlName="city" type="text"  placeholder="{{user.address[0].municipio}}" value="{{user.address[0].municipio}}" >
+      </div>
+
+      <div >
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="{{user.email}}" value="{{user.email}}" >
+      </div>
+
+      <div >
+        <label>Permiso de Conducir</label>
+        <input type="text" placeholder="{{user.permisos}}" value="{{user.permisos}}" >
+      </div>
+
+      <label>Sobre mí</label>
+      <textarea>{{user.sobre_mi}}</textarea>
+      <label>Otras competencias</label>
+      <textarea>{{user.otras_competencias}}</textarea>
+
+      <input type="submit" value="guardar" [disabled]="!formDatos.valid"  (click)="save()">
+
+    </form>
+    <p>Form status: {{formDatos.status}}</p>
+  </div>
+</section>
+</div>
+

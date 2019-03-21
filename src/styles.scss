@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC');
 *{
   font-family: 'Noto Serif SC', serif;
@@ -14,7 +16,6 @@ header{
 section{
   margin-bottom: 5px;
 }
-div{display: flex;flex-wrap: wrap;align-items: center}
 h1{font-size: 3rem}
 h2{font-size: 2rem;margin-bottom: 0}
 
@@ -43,9 +44,8 @@ label{
 
 input{
   display: block;
-  width: 200px;
-  max-width: 400px;
   margin: 5px;
+  width: 100%;
 }
 label input{width: 40px}
 textarea{
@@ -55,7 +55,6 @@ textarea{
 }
 select{
   display: block;
-  width: 200px;
   margin-bottom: 5px;
 }
 a{ padding: 10px 15px}
@@ -66,12 +65,12 @@ a{ padding: 10px 15px}
   justify-content: center;
 }
 .formulario-datos{
-  width: 80%;
+  width: 980px;
+  margin: 0 auto;
 }
 
 .avatar{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  max-width: 120px;
 }

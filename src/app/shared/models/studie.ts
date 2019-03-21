@@ -1,20 +1,20 @@
 export interface Universidad {
-     centro: string;
-     titulo: string;
-     fecha: string;
-     formacion: string;
-     certificado: boolean;
+    centro: string;
+    titulo: string;
+    fecha: string;
+    formacion: string;
+    certificado: boolean;
 }
 
 export interface Ciclo {
-     centro: string;
-     familia: string;
-     grado: string;
-     titulo: string;
-     fecha: string;
-     formacion_dual: boolean;
-     formacion_bilingue: boolean;
-     certificado: boolean;
+    centro: string;
+    familia: string;
+    grado: string;
+    titulo: string;
+    fecha: string;
+    formacion_dual: boolean;
+    formacion_bilingue: boolean;
+    certificado: boolean;
 }
 
 export class Studie {

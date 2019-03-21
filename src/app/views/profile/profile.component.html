@@ -1,3 +1,163 @@
-<main *ngIf="user">
-    hola {{user.name}}
+<p>
+  profile works!
+</p>
+<div *ngIf="user">
+  hola {{user.name}}
+
+
+
+<main class="company" *ngIf="user.userRol == 'company'">
+  <section class="container datos" >
+    <div>
+      <img src="assets/img/main.jpg" width="100px" height="100px"><br>
+      {{user.id}}
+    </div>
+    <div>
+      Nombre: {{user.nameCompany}} <br>
+      Razón Social: {{user.razonSocial}}<br>
+      CIF: {{user.CIF}}<br>
+      Dirección: {{user.address}}
+    </div>
+    <div>
+      Nombre: {{user.name}} {{user.surname}}<br>
+      Teléfono: {{user.phone}}<br>
+      Email: {{user.email}} <br>
+    </div>
+    <a [routerLink]="['/admin/profile-data']">Modificar datos</a>
+  </section>
+  <section class="container experiencia">
+    <h2>Ofertas</h2>
+    <a [routerLink]="['/admin/profile-experience']">añadir nueva +</a>
+    <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Puesto</th>
+        <th>Empresa</th>
+        <th>Familia</th>
+        <th>Fecha</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let key of keys_offers">
+      <tr>
+        <td>{{user.offers.entities[key].oid}}</td>
+        <td>{{user.offers.entities[key].position}}</td>
+        <td>{{user.offers.entities[key].company}}</td>
+        <td>{{user.offers.entities[key].family}}</td>
+        <td>{{user.offers.entities[key].date}}</td>
+        <td><a >editar</a></td>
+        <td><button (click)='removeOffer(user.offers.entities[key].oid)'>borrar</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
 </main>
+
+<!--------------------------------------------------------------
+ESTUDIANTE
+--------------------------------------------------------------->
+<main *ngIf="user.userRol === 'student'">
+  <section class="container datos" >
+    <div>
+      <img src="assets/img/main.jpg" width="100px">
+      <span>{{user.name}} {{user.surname}}</span>
+    </div>
+    <div>
+      Email: {{user.email}} <br>
+      Fecha Nacimiento: <br>
+      Teléfono: {{user.phone}}<br>
+      <span>{{user.documento_identidad}}</span>: {{user.numero_documento}}<br>
+      Permisos conducir: {{user.permisos}}
+    </div>
+    <div>
+      Acerca de mi:{{user.sobre_mi}}
+    </div>
+    <div>
+      Otras competencias:{{user.otras_competencias}}
+    </div>
+    <a routerLink="/admin/profile/data/{{user.id}}">Modificar datos</a>
+
+  </section>
+
+
+
+  <section class="container formacion">
+    <h2>Formación Académica</h2>
+    <a [routerLink]="['/admin/profile/studies']">añadir nuevo +</a>
+    <table>
+      <thead>
+      <tr>
+        <th>Nivel</th>
+        <th>Título</th>
+        <th>Centro</th>
+        <th>Fecha</th>
+        <th>Certificado</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      </thead>
+
+      <tbody *ngFor="let _ of user?.studies; let index=index; trackBy: trackByFn">
+      <tr>
+        <td>{{user.studies[index].tipo_titulo}}</td>
+        <td *ngIf="user.studies[index].formacion_ciclo != null">{{user.studies[index].formacion_ciclo[0].titulo}}</td>
+        <td *ngIf="user.studies[index].formacion_ciclo != null">{{user.studies[index].formacion_ciclo[0].centro}}</td>
+        <td *ngIf="user.studies[index].formacion_ciclo != null">{{user.studies[index].formacion_ciclo[0].fecha}}</td>
+        <td *ngIf="user.studies[index].formacion_ciclo != null">{{user.studies[index].formacion_ciclo[0].certificado}}</td>
+        <td><a routerLink="/admin/profile/{{user.id}}/studies/{{user.studies[index].sid}}">editar</a></td>
+        <td><button (click)='removeStudie(user.studies[index].sid)'>borrar</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!--section class="container experiencia">
+    <h2>Experiencia Laboral</h2>
+    <a [routerLink]="['/admin/profile-experience']">añadir nuevo +</a>
+    <table>
+      <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Puesto</th>
+        <th>Fechas</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let key of keys_experiences">
+      <tr>
+        <td>{{user.experiences.entities[key].company}}</td>
+        <td>{{user.experiences.entities[key].position}}</td>
+        <td>{{user.experiences.entities[key].date}}</td>
+        <td><a routerLink="/admin/profile/experience/{{user.experiences.entities[key].eid}}">editar</a></td>
+        <td><button (click)='removeExperience(user.experiences.entities[key].eid)'>borrar</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section-->
+
+  <section class="container idiomas">
+    <h2>Idiomas</h2>
+    <a [routerLink]="['/admin/profile-language']">añadir nuevo +</a>
+
+    <table>
+      <thead>
+      <tr>
+        <th>Empresa</th>
+        <th>Puesto</th>
+        <th>Fechas</th>
+        <th colspan="2">Acciones</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let _ of user?.languages; let index=index; trackBy: trackByFn">
+      <tr>
+        <td>{{user.languages[index].nivel}}</td>
+        <td>{{user.languages[index].idioma}}</td>
+        <td>{{user.languages[index].fecha}}</td>
+        <td><a routerLink="/admin/profile/language/{{user.languages[index].lid}}">editar</a></td>
+        <td><button (click)='removeLanguage(user.languages[index].lid)'>borrar</button></td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>
+</div>

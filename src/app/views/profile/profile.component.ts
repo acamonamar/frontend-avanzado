@@ -1,10 +1,11 @@
-import 'rxjs/add/operator/switchMap';
-import { Component, Input, OnInit }         from '@angular/core';
+//import 'rxjs/add/operator/switchMap';
+import {Component, Input, OnInit, Output} from '@angular/core';
 
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
-import { User }                             from '../../shared/models/user';
-import { SigninService }                    from '../../shared/services/signin.service';
+import { User }           from '../../shared/models/user';
+import { UserService }    from '../../shared/services/user.service';
+import { Studie }         from "../../shared/models/studie";
 
 @Component({
   selector: 'app-profile',
@@ -12,23 +13,22 @@ import { SigninService }                    from '../../shared/services/signin.s
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  @Input() user: User;
+  user: User;
 
   constructor(
-      private _signinservice: SigninService,
+      private _userservice: UserService,
       private _route: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
-    this._route.paramMap
-        .switchMap((params: ParamMap) => this._signinservice.getUser(+params.get('uid')))
-        .subscribe(user => this.user = user);
+    // this.getUser();
+    this.getUserById();
   }
 
-  /*getUser(): void {
+  getUserById() {
     const id = +this._route.snapshot.paramMap.get('id');
-    this._signinservice.getUser(id)
+    this._userservice.getUser(id)
       .subscribe(user => this.user = user);
-  }*/
+  }
 
 }

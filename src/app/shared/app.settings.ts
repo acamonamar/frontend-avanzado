@@ -3,7 +3,7 @@ export class AppSettings {
   public static readonly APP_NAME = 'PoliJob';
   public static readonly APP_LOCALSTORAGE_TOKEN = 'PoliJob_Token';
   public static readonly APP_VERSION = '0.1.0';
-  public static readonly API_ENDPOINT = '//localhost:4200/';
+  public static readonly API_ENDPOINT = '//localhost:3000/';
   public static readonly STATIC_ENDPOINT = AppSettings.API_ENDPOINT + 'static/';
   public static readonly STATIC_AVATAR_ENDPOINT =
     AppSettings.STATIC_ENDPOINT + 'images/avatar/';

@@ -1,10 +1,10 @@
 import { Address }      from './address';
 import { Studie }       from './studie';
-import { Experience }   from './experience';
+// import { Experience }   from './experience';
 import { Language }     from './language';
 
 export class User {
-    public uid: number;
+    public id: number;
     public userName: string;
     public name: string;
     public surname: string;
@@ -19,7 +19,7 @@ export class User {
     public languages: Language[];
 
     constructor(
-        uid: number,
+        id: number,
         userName: string,
         name: string,
         surname: string,
@@ -32,8 +32,8 @@ export class User {
         studies: Studie[],
         // experiences: Experience[],
         languages: Language[]
-        ) {
-        this.uid = uid;
+    ) {
+        this.id = id;
         this.userName = userName;
         this.name = name;
         this.surname = surname;
