@@ -12,11 +12,11 @@ export class FakeBackendService implements InMemoryDbService {
                 email: 'jandrocm@gmail.com',
                 password: '1234',
                 userRol: 'student',
-                documento_identidad: 'otro',
+                documento_identidad: 'dni',
                 numero_documento: '44365112k',
                 permisos: 'B1',
                 sobre_mi: 'LOREM IPSUM',
-                otras_competencias:'LOREM IPSUM',
+                otras_competencias: 'LOREM IPSUM',
                 address: [{
                     street: 'Urbanización las Areanas - 45',
                     provincia: 'Cádiz',
@@ -24,7 +24,7 @@ export class FakeBackendService implements InMemoryDbService {
                 }],
                 avatar_hash: 'ef72d0e94ba5015d64de8522d845cfd2',
                 studies: [
-                    {uid: 0, sid: 0, tipo_titulo: 'ciclo', formacion_universidad: null,
+                    {id: 0, sid: 0, tipo_titulo: 'ciclo', formacion_universidad: null,
                         formacion_ciclo: [{
                             centro: 'IES Politécnico Jesús Marin',
                             familia: 'informatica',
@@ -36,7 +36,7 @@ export class FakeBackendService implements InMemoryDbService {
                             certificado: true
                         }]
                     },
-                    {uid: 0, sid: 1, tipo_titulo: 'ciclo', formacion_universidad: null,
+                    {id: 0, sid: 1, tipo_titulo: 'ciclo', formacion_universidad: null,
                         formacion_ciclo: [{
                             centro: 'IES Politécnico Jesús Marin',
                             familia: 'informatica',
@@ -48,9 +48,29 @@ export class FakeBackendService implements InMemoryDbService {
                             certificado: true
                         }]
                     }],
+                experiences: [
+                        {
+                            id: 0,
+                            eid: 0,
+                            empresa: 'Suma',
+                            fecha_incio: '1548320228',
+                            fecha_fin: '1548320228',
+                            puesto: 'Junior',
+                            tareas: 'Desarrollador front-end'
+                        },
+                        {
+                            id: 0,
+                            eid: 1,
+                            empresa: 'Indra',
+                            fecha_incio: '1548320228',
+                            fecha_fin: '1548320228',
+                            puesto: 'Ingeniero',
+                            tareas: 'Desarrollador back-end'
+                        }
+                        ],
                 languages: [
-                    {uid: 0, lid: 0, idioma: 'Inglés', nivel: 'B2', fecha: '1548320228'},
-                    {uid: 0, lid: 1, idioma: 'Portugués', nivel: 'A2', fecha: '1548320228'}
+                    {id: 0, lid: 0, idioma: 'Inglés', nivel: 'B2', fecha: '1548320228'},
+                    {id: 0, lid: 1, idioma: 'Portugués', nivel: 'A2', fecha: '1548320228'}
                 ]
             }];
         return {users};

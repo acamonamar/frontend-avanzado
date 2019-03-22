@@ -55,6 +55,11 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
+        path: 'profile/:id/languages/:lid',
+        loadChildren: './views/profile/forms/languages/profile-idiomas.module#ProfileIdiomasModule',
+        data: { title: 'Material', breadcrumb: 'MATERIAL' }
+      },
+      {
         path: 'offers',
         loadChildren: './views/offers/offers.module#OffersModule',
         data: { title: 'Offers', breadcrumb: 'Offers' }

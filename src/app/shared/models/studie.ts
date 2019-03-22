@@ -18,20 +18,20 @@ export interface Ciclo {
 }
 
 export class Studie {
-    public uid: number;
+    public id: number;
     public sid: number;
     public tipo_titulo: string;
     public formacion_universidad: Universidad[];
     public formacion_ciclo: Ciclo[];
 
     constructor(
-        uid: number,
+        id: number,
         sid: number,
         tipo_titulo: string,
         formacion_universidad: Universidad[],
         formacion_ciclo: Ciclo[],
     ) {
-        this.uid = uid;
+        this.id = id;
         this.sid = sid;
         this.tipo_titulo = tipo_titulo;
         this.formacion_universidad = formacion_universidad;

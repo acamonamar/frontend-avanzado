@@ -5,13 +5,13 @@
   <div class="avatar">
       <img src="assets/img/main.jpg" width="100px">
       <span>
-        <a [routerLink]="['/admin/profile']">{{user.name}} {{user.surname}}</a>
+        <a routerLink="/admin/profile/{{user.id}}">{{user.name}} {{user.surname}}</a>
       </span>
   </div>
     <hr>
 
     <div class="formulario-datos">
-    <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="submit()">
+    <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="save()">
       <div >
         <label>Nombre</label>
         <input id="name" type="text" formControlName="name" placeholder="{{user.name}}" value="{{user.name}}" >
@@ -53,26 +53,29 @@
         <input type="tel">
       </div>
 
-      <div >
+       <div formGroupName="documento" >
         <label>Tipo de documento</label>
-        <select *ngIf="user.documento_identidad === 'dni'">
+        <select formControlName="tipo" *ngIf="user.documento_identidad == 'dni'">
           <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
           <option>Otro</option>
           <option>Pasaporte</option>
         </select>
-        <select *ngIf="user.documento_identidad === 'otro'">
+        <!--select formControlName="tipo"  *ngIf="user.documento_identidad === 'otro'">
           <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
           <option value="DNI">DNI</option>
           <option value="Pasaporte">Pasaporte</option>
         </select>
-        <select *ngIf="user.documento_identidad === 'pasaporte'">
+        <select formControlName="tipo"  *ngIf="user.documento_identidad === 'pasaporte'">
           <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
           <option value="DNI">DNI</option>
           <option value="otro">Otro</option>
-        </select>
+        </select-->
         <label>Número de Identidad</label>
-        <input type="text" value="{{user.numero_documento}}">
-      </div>
+        <input  formControlName="numero" type="text" placeholder="{{user.numero_documento}}">
+
+         <p>DNI status: {{documento.status}}</p>
+         <p>Número status: {{documento.status}}</p>
+       </div>
       <div formGroupName="address" >
         <label>Dirección</label>
         <input formControlName="street" type="text"  placeholder="{{user.address[0].street}}" value="{{user.address[0].street}}" >
@@ -97,7 +100,7 @@
       <label>Otras competencias</label>
       <textarea>{{user.otras_competencias}}</textarea>
 
-      <input type="submit" value="guardar" [disabled]="!formDatos.valid"  (click)="save()">
+      <button [disabled]="!formDatos.valid"  > GUARDAR</button>
 
     </form>
     <p>Form status: {{formDatos.status}}</p>

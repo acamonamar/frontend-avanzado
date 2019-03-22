@@ -1,11 +1,9 @@
-//import 'rxjs/add/operator/switchMap';
-import {Component, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
 
 import { User }           from '../../shared/models/user';
 import { UserService }    from '../../shared/services/user.service';
-import { Studie }         from "../../shared/models/studie";
 
 @Component({
   selector: 'app-profile',
@@ -21,7 +19,6 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // this.getUser();
     this.getUserById();
   }
 
@@ -29,6 +26,21 @@ export class ProfileComponent implements OnInit {
     const id = +this._route.snapshot.paramMap.get('id');
     this._userservice.getUser(id)
       .subscribe(user => this.user = user);
+  }
+
+  removeStudie(index: number) {
+    this.user.studies = this.user.studies.filter((_, i) => i !== index);
+  }
+  removeExperience(index: number) {
+    this.user.experiences = this.user.experiences.filter((_, i) => i !== index);
+  }
+  removeSLanguage(index: number) {
+    this.user.languages = this.user.languages.filter((_, i) => i !== index);
+  }
+
+  // used to avoid refresh dom editing powers
+  trackByFn(index, user) {
+    return index;
   }
 
 }

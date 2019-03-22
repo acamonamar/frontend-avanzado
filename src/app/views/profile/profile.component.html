@@ -111,33 +111,34 @@ ESTUDIANTE
     </table>
   </section>
 
-  <!--section class="container experiencia">
+  <section class="container experiencia">
     <h2>Experiencia Laboral</h2>
     <a [routerLink]="['/admin/profile-experience']">añadir nuevo +</a>
     <table>
       <thead>
       <tr>
         <th>Empresa</th>
+        <th colspan="2">Fechas</th>
         <th>Puesto</th>
-        <th>Fechas</th>
         <th colspan="2">Acciones</th>
       </tr>
       </thead>
-      <tbody *ngFor="let key of keys_experiences">
+      <tbody *ngFor="let _ of user?.experiences; let index=index; trackBy: trackByFn">
       <tr>
-        <td>{{user.experiences.entities[key].company}}</td>
-        <td>{{user.experiences.entities[key].position}}</td>
-        <td>{{user.experiences.entities[key].date}}</td>
-        <td><a routerLink="/admin/profile/experience/{{user.experiences.entities[key].eid}}">editar</a></td>
-        <td><button (click)='removeExperience(user.experiences.entities[key].eid)'>borrar</button></td>
+        <td>{{user.experiences[index].empresa}}</td>
+        <td>{{user.experiences[index].fecha_inicio}}</td>
+        <td>{{user.experiences[index].fecha_fin}}</td>
+        <td>{{user.experiences[index].puesto}}</td>
+        <td><a routerLink="/admin/profile/experience/{{user.experiences[index].eid}}">editar</a></td>
+        <td><button (click)='removeExperience(user.experiences[index].eid)'>borrar</button></td>
       </tr>
       </tbody>
     </table>
-  </section-->
+  </section>
 
   <section class="container idiomas">
     <h2>Idiomas</h2>
-    <a [routerLink]="['/admin/profile-language']">añadir nuevo +</a>
+    <a routerLink="/admin/profile-language">añadir nuevo +</a>
 
     <table>
       <thead>
@@ -153,7 +154,7 @@ ESTUDIANTE
         <td>{{user.languages[index].nivel}}</td>
         <td>{{user.languages[index].idioma}}</td>
         <td>{{user.languages[index].fecha}}</td>
-        <td><a routerLink="/admin/profile/language/{{user.languages[index].lid}}">editar</a></td>
+        <td><a routerLink="/admin/profile/{{user.id}}/languages/{{user.languages[index].lid}}">editar</a></td>
         <td><button (click)='removeLanguage(user.languages[index].lid)'>borrar</button></td>
       </tr>
       </tbody>

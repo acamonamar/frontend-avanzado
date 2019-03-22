@@ -1,10 +1,12 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, Form} from '@angular/forms';
 import { Location } from '@angular/common';
-
-import { UserService } from "../../../../shared/services/user.service";
 import { ActivatedRoute, Router} from '@angular/router';
-import { User } from "../../../../shared/models/user";
+
+import { User } from '../../../../shared/models/user';
+import { UserService } from '../../../../shared/services/user.service';
+
+import {dniValidator} from '../../../../shared/validators/documento.validator';
 
 @Component({
   selector: 'app-profile-datos',
@@ -15,7 +17,7 @@ import { User } from "../../../../shared/models/user";
 export class ProfileDatosComponent implements OnInit {
 
   @Input() user: User;
-
+  userEdit: User;
   public formDatos: FormGroup;
 
 
@@ -28,52 +30,49 @@ export class ProfileDatosComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getUser();
-
-    this.formDatos = this.formBuilder.group({
-      'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
-      'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
-      'email': ['', [Validators.required, Validators.email]],
-      'address': this.formBuilder.group({
-          'street': ['' , [Validators.required]],
-          'zone': ['', [Validators.required]],
-          'city': ['', [Validators.required]]
-      })
-    });
+      console.log();
+      this.getUserById();
+      this.formDatos = this.formBuilder.group({
+          'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
+          'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
+          'email': ['', [Validators.email]],
+          'documento': this.formBuilder.group({
+              'tipo': [''],
+              'numero': [''],
+          }, {validator: dniValidator}),
+          'address': this.formBuilder.group({
+              'street': ['' ],
+              'zone': [''],
+              'city': ['']
+          })
+      });
   }
 
-  getUser(): void {
-    const id = +this._route.snapshot.paramMap.get('id');
-    console.log(id);
-    // this._userservice.getUser(id).subscribe(user => this.user = user);
-    this._userservice.getUsers().subscribe(
-        res => {
-          console.log('Repuesta del subscribe: '+ res);
 
-          let encontrado = 0;
-          let i: number;
-          for ( i = 0; i < res.length; i++) {
-            if (res[i].id === id ) {
-              localStorage.setItem('identity', JSON.stringify(res[i]));
-              this.user = res[i];
-              console.log('Este usuario... ' + this.user.name);
-              /*let u: User = {user: username, passwd: password};
-              this._userService.setUserLoggedIn(u);*/
-              encontrado = 1;
-              console.log(this.user);
-            }
-          }
-          if (encontrado === 0) {
-            alert('Usuario incorrecto');
-          }
-        });
+  getUserById() {
+      const id = +this._route.snapshot.paramMap.get('id');
+      this._userservice.getUser(id)
+          .subscribe(user => this.user = user);
   }
+
+  onChanges(): void {
+        console.log('CAMBIANDO' + this.user);
+  }
+
   save(): void {
-        this._userservice.updateUser(this.user)
-            .subscribe(() => this.goBack());
+      console.log(this.user);
+      this.userEdit = this.user;
+      this.userEdit.name = this.formDatos.get('name').value;
+      this.userEdit.surname = this.formDatos.get('surname').value;
+      this.userEdit.phone = this.formDatos.get('phone').value;
+      this.userEdit.documento_identidad = this.formDatos.get('tipo').value;
+      this.userEdit.numero_documento = this.formDatos.get('numero').value;
+      console.log(this.userEdit);
+      this._userservice.updateUser(this.userEdit);
+          // .subscribe(() => this.goBack());
   }
 
-
+  get documento() { return this.formDatos.get('documento'); }
   get name() { return this.formDatos.get('name'); }
   get surname() { return this.formDatos.get('surname'); }
   get email() { return this.formDatos.get('email'); }
