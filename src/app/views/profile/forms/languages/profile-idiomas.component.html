@@ -16,7 +16,7 @@
             <td>{{user.languages[index].nivel}}</td>
             <td>{{user.languages[index].idioma}}</td>
             <td>{{user.languages[index].fecha}}</td>
-            <td><a routerLink="/admin/profile/{{user.id}}/languages/{{user.languages[index].lid}}">editar</a></td>
+            <td><a routerLink="/admin/profile/{{user.id}}/languages/{{user.languages[index].lid}}" (click)="editarIdioma()">editar</a></td>
             <td><button (click)='removeLanguage(user.languages[index].lid)'>borrar</button></td>
         </tr>
         </tbody>
@@ -52,58 +52,24 @@
       certificado: true
 
     ------------------------------------>
-{{idiomas[0].name}}
       <form id="formIdioma" class="form-grupo" [formGroup]="formIdioma" (ngSubmit)="submit(formIdioma)">
           <!-- IDIOMAS ------------>
 
-          <select formControlName="idioma" ng-model="seleccion"
-                  *ngIf="user.languages[lid].idioma === 'Ingles'">
-              <option value="Inglés" ng-selected="seleccion">Inglés</option>
-              <option value="Francés" >Francés</option>
-              <option value="Alemán" >Alemán</option>
-              <option value="Portugués" >Portugués</option>
-              <option value="Otros" >Otros</option>
+          <select formControlName="idioma" ng-model="seleccion" >
+              <option *ngFor="let item of items" value="{{item.name}}">{{item.name}}</option>
           </select>
-          <select formControlName="idioma" ng-model="seleccion"
-                  *ngIf="user.languages[lid].idioma === 'Francés'">
-              <option value="Inglés" >Inglés</option>
-              <option value="Frances" ng-selected="seleccion">Frances</option>
-              <option value="Alemán" >Alemán</option>
-              <option value="Portugués" >Portugués</option>
-              <option value="Otros" >Otros</option>
-          </select>
-          <select formControlName="idioma" ng-model="seleccion"
-                  *ngIf="user.languages[lid].idioma === 'Alemán'">
-              <option value="Inglés" >Inglés</option>
-              <option value="Frances" >Frances</option>
-              <option value="Alemán" ng-selected="seleccion">Alemán</option>
-              <option value="Portugués" >Portugués</option>
-              <option value="Otros" >Otros</option>
-          </select>
-          <select formControlName="idioma" ng-model="seleccion"
-                  *ngIf="user.languages[lid].idioma === 'Portugués'">
-              <option value="Inglés" >Inglés</option>
-              <option value="Frances" >Frances</option>
-              <option value="Alemán" >Alemán</option>
-              <option value="Portugués" ng-selected="seleccion">Portugués</option>
-              <option value="Otros" >Otros</option>
-          </select>
-          <select formControlName="idioma" ng-model="seleccion"
-                  *ngIf="user.languages[lid].idioma === 'Otro'">
-              <option value="Inglés" ng-selected="seleccion">Inglés</option>
-              <option value="Frances" >Frances</option>
-              <option value="Alemán" >Alemán</option>
-              <option value="Portugués" >Portugués</option>
-              <option value="Otro" ng-selected="seleccion" >Otro</option>
-          </select>
+
           <input placeholder="introduce idioma">
 
 
           <!-----------
           NIVEL
           ------------>
+          <select formControlName="nivel_idioma" ng-model="seleccion" >
+              <option *ngFor="let nivel of niveles" value="{{nivel.name}}">{{nivel.name}}</option>
+          </select>
 
-          <select formControlName="nivel_idioma" ng-model="seleccion"
+          <!--select formControlName="nivel_idioma" ng-model="seleccion"
                   *ngIf="user.languages[lid].nivel === 'A1'">
               <option value="A1" ng-selected="seleccion">A1</option>
               <option value="A2" >A2</option>
@@ -161,11 +127,11 @@
               <option value="B1" >B1</option>
               <option value="B2" >B2</option>
               <option value="C1" >C1</option>
-          </select>
+          </select-->
           <!-- NIVEL ------------>
 
 
-          <input type="text" value="{{user.languages[lid].fecha}}">
+          <input formContolName="fecha" type="text" value="{{user.languages[lid].fecha}}">
 
         <input type="submit" value="guardar" [disabled]="!formIdioma.valid">
         <p>Form status: {{formIdioma.status}}</p>
