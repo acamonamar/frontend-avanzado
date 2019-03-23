@@ -1,0 +1,55 @@
+<div *ngIf="user">
+
+    <section class="container editar-formacion">
+        <div class="avatar">
+            <img src="assets/img/main.jpg" width="100px">
+            <span>
+              <a routerLink="/admin/profile/{{user.id}}">{{user.name}} {{user.surname}}</a>
+            </span>
+        </div>
+    </section>
+    <section class="container idiomas">
+        <h2>Idiomas</h2>
+        <a routerLink="/admin/profile-language">añadir nuevo +</a>
+        <table>
+            <thead>
+            <tr>
+                <th>Nivel</th>
+                <th>Puesto</th>
+                <th>Fechas</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let _ of user?.languages; let index=index; trackBy: trackByFn">
+            <tr>
+                <td>{{user.languages[index].nivel}}</td>
+                <td>{{user.languages[index].idioma}}</td>
+                <td>{{user.languages[index].fecha}}</td>
+                <td><a routerLink="/admin/profile/{{user.id}}/languages/{{user.languages[index].lid}}" (click)="editarIdioma()">editar</a></td>
+                <td><button (click)='removeLanguage(user.languages[index].lid)'>borrar</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="container editar-formacion">
+        <h2>Editar Idioma</h2>
+        <hr>
+        <form id="formIdioma" class="form-grupo" [formGroup]="formIdioma" (ngSubmit)="submit(formIdioma)">
+            <!-- IDIOMAS ------------>
+            <select formControlName="idioma" ng-model="seleccion" >
+                <option *ngFor="let item of items" value="{{item.name}}">{{item.name}}</option>
+            </select>
+            <input placeholder="introduce idioma">
+            <!-- NIVEL ------------>
+            <select formControlName="nivel_idioma" ng-model="seleccion" >
+                <option *ngFor="let nivel of niveles" value="{{nivel.name}}">{{nivel.name}}</option>
+            </select>
+
+            <input formContolName="fecha" type="text" value="{{user.languages[lid].fecha}}">
+
+            <input type="submit" value="guardar" [disabled]="!formIdioma.valid">
+            <p>Form status: {{formIdioma.status}}</p>
+          </form>
+    </section>
+</div>
+

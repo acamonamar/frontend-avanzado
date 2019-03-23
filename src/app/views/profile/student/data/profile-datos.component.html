@@ -14,7 +14,8 @@
     <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="save()">
       <div >
         <label>Nombre</label>
-        <input id="name" type="text" formControlName="name" placeholder="{{user.name}}" value="{{user.name}}" >
+        <input id="name" type="text" formControlName="name" >
+
         <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger">
           <div *ngIf="name.errors.required">
             Es obligatorio
@@ -25,7 +26,7 @@
         </div>
 
         <label>Apellidos</label>
-        <input id="surname" type="text" formControlName="surname" placeholder="{{user.surname}}" value="{{user.surname}}" >
+        <input id="surname" type="text" formControlName="surname" >
         <div *ngIf="surname.invalid && (surname.dirty || surname.touched)" class="alert alert-danger">
           <div *ngIf="surname.errors.required">
            Es obligatorio
@@ -55,34 +56,24 @@
 
        <div formGroupName="documento" >
         <label>Tipo de documento</label>
-        <select formControlName="tipo" *ngIf="user.documento_identidad == 'dni'">
-          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
-          <option>Otro</option>
-          <option>Pasaporte</option>
-        </select>
-        <!--select formControlName="tipo"  *ngIf="user.documento_identidad === 'otro'">
-          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
-          <option value="DNI">DNI</option>
-          <option value="Pasaporte">Pasaporte</option>
-        </select>
-        <select formControlName="tipo"  *ngIf="user.documento_identidad === 'pasaporte'">
-          <option selected value="{{user.documento_identidad}}">{{user.documento_identidad}}</option>
-          <option value="DNI">DNI</option>
-          <option value="otro">Otro</option>
-        </select-->
+         <select formControlName="tipo" ng-model="seleccion" >
+           <option *ngFor="let documento of documentos" value="{{documento.name}}">{{documento.name}}</option>
+         </select>
         <label>Número de Identidad</label>
-        <input  formControlName="numero" type="text" placeholder="{{user.numero_documento}}">
+        <input  formControlName="numero" type="text">
 
          <p>DNI status: {{documento.status}}</p>
          <p>Número status: {{documento.status}}</p>
        </div>
-      <div formGroupName="address" >
+      <div formGroupName="direccion" >
         <label>Dirección</label>
-        <input formControlName="street" type="text"  placeholder="{{user.address[0].street}}" value="{{user.address[0].street}}" >
+        <input formControlName="street" type="text"  >
         <label>Provicia</label>
-        <input formControlName="zone" type="text"  placeholder="{{user.address[0].provincia}}" value="{{user.address[0].provincia}}" >
+        <select formControlName="zone" ng-model="seleccion" >
+          <option *ngFor="let provincia of provincias" value="{{provincia.name}}">{{provincia.name}}</option>
+        </select>
         <label>Municipio</label>
-        <input formControlName="city" type="text"  placeholder="{{user.address[0].municipio}}" value="{{user.address[0].municipio}}" >
+        <input formControlName="city" type="text"  >
       </div>
 
       <div >

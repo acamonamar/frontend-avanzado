@@ -1,5 +1,6 @@
-export class Provincias {
-    public provincias = [
+import { ListProvincias } from '../models/list-provincias';
+
+export const LISTADO_PROVINCIAS: ListProvincias[] = [
         { name: 'A Coruña'},
         { name: 'Álava'},
         { name: 'Albacete'},
@@ -51,4 +52,4 @@ export class Provincias {
         { name: 'Zamora'},
         { name: 'Zaragoza'},
     ];
-}
+

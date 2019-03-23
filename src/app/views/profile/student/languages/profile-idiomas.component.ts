@@ -25,7 +25,6 @@ export class ProfileIdiomasComponent implements OnInit {
     @Output() niveles: ListNivelesIdiomas[];
 
     public lid;
-    public idioma_inicial;
     public formIdioma: FormGroup;
 
 

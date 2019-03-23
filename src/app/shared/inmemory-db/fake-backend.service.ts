@@ -12,7 +12,7 @@ export class FakeBackendService implements InMemoryDbService {
                 email: 'jandrocm@gmail.com',
                 password: '1234',
                 userRol: 'student',
-                documento_identidad: 'dni',
+                documento_identidad: 'DNI',
                 numero_documento: '44365112k',
                 permisos: 'B1',
                 sobre_mi: 'LOREM IPSUM',
@@ -24,11 +24,19 @@ export class FakeBackendService implements InMemoryDbService {
                 }],
                 avatar_hash: 'ef72d0e94ba5015d64de8522d845cfd2',
                 studies: [
-                    {id: 0, sid: 0, tipo_titulo: 'ciclo', formacion_universidad: null,
+                    {id: 0, sid: 0, tipo_titulo: 'Ciclo',
+                        formacion_universidad: [{
+                            centro: '',
+                            titulo: '',
+                            fecha: '',
+                            familia: '',
+                            formacion: '',
+                            certificado: true,
+                        }],
                         formacion_ciclo: [{
                             centro: 'IES Politécnico Jesús Marin',
-                            familia: 'informatica',
-                            grado: 'superior',
+                            familia: 'Informática',
+                            grado: 'Superior',
                             titulo: 'Administracion de sistemas informaticos y redes',
                             fecha: '1397293028',
                             formacion_dual: false,
@@ -36,16 +44,44 @@ export class FakeBackendService implements InMemoryDbService {
                             certificado: true
                         }]
                     },
-                    {id: 0, sid: 1, tipo_titulo: 'ciclo', formacion_universidad: null,
+                    {id: 0, sid: 1, tipo_titulo: 'Ciclo',
+                        formacion_universidad: [{
+                            centro: '',
+                            titulo: '',
+                            fecha: '',
+                            familia: '',
+                            formacion: '',
+                            certificado: true,
+                        }],
                         formacion_ciclo: [{
                             centro: 'IES Politécnico Jesús Marin',
-                            familia: 'informatica',
-                            grado: 'superior',
+                            familia: 'Informática',
+                            grado: 'Superior',
                             titulo: 'Técnico Superior en Desarrollo de Aplicaciones Web',
                             fecha: '1397293028',
                             formacion_dual: false,
                             formacion_bilingue: false,
                             certificado: true
+                        }]
+                    },
+                    {id: 0, sid: 2, tipo_titulo: 'Universidad',
+                        formacion_universidad: [{
+                            centro: 'Universidad de Almería',
+                            titulo: 'Ingeniero Técnico Informática de Gestión',
+                            fecha: '1397293028',
+                            familia: 'Informática',
+                            formacion: 'Oficial',
+                            certificado: true,
+                        }],
+                        formacion_ciclo: [{
+                            centro: '',
+                            familia: '',
+                            grado: '',
+                            titulo: '',
+                            fecha: '',
+                            formacion_dual: false,
+                            formacion_bilingue: false,
+                            certificado: false
                         }]
                     }],
                 experiences: [

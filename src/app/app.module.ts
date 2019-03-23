@@ -21,7 +21,7 @@ import { MockService } from './shared/services/mock.service';
     HttpClientInMemoryWebApiModule.forRoot(
         FakeBackendService, { dataEncapsulation: false }
     ),
-    RouterModule.forRoot(rootRouterConfig, { enableTracing: true }),
+    RouterModule.forRoot(rootRouterConfig, { enableTracing: false }),
 
   ],
   declarations: [AppComponent],

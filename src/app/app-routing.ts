@@ -46,17 +46,17 @@ export const rootRouterConfig: Routes = [
       },
       {
         path: 'profile/data/:id',
-        loadChildren: './views/profile/forms/data/profile-datos.module#ProfileDatosModule',
+        loadChildren: './views/profile/student/data/profile-datos.module#ProfileDatosModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
         path: 'profile/:id/studies/:sid',
-        loadChildren: './views/profile/forms/studies/profile-formacion.module#ProfileFormacionModule',
+        loadChildren: './views/profile/student/studies/profile-formacion.module#ProfileFormacionModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
         path: 'profile/:id/languages/:lid',
-        loadChildren: './views/profile/forms/languages/profile-idiomas.module#ProfileIdiomasModule',
+        loadChildren: './views/profile/student/languages/profile-idiomas.module#ProfileIdiomasModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {
