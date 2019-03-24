@@ -21,6 +21,7 @@ export class ProfileIdiomasComponent implements OnInit {
 
     @Input() user: User;
     @Output() users: User[];
+    @Output() userEdit: User;
     @Output() items: ListIdiomas[];
     @Output() niveles: ListNivelesIdiomas[];
 
@@ -45,18 +46,12 @@ export class ProfileIdiomasComponent implements OnInit {
       this.getNivelesIdiomas();
       // Obtenemos el usuario
       this.getUserById();
-      // Si cambiamos en Formulario
-      this.onChanges();
+
       this.formIdioma = this.formBuilder.group({
           'idioma': ['Elige tu idioma'],
           'nivel_idioma': ['Elige tu nivel'],
       });
   }
-
-
-    onChanges() {
-        // Validación Formulario
-    }
 
     getIdioma() {
         this._mockservice.getIdiomas()
@@ -82,9 +77,25 @@ export class ProfileIdiomasComponent implements OnInit {
 
 
     save(): void {
+        console.log('USUARIO ACTUAL');
         console.log(this.user);
-        this._userservice.updateUser(this.user)
-            .subscribe(() => this.goBack());
+
+        this.userEdit = this.user;
+
+        if (this.formIdioma.value.idioma !== undefined) {
+            this.userEdit.languages[this.lid].idioma = this.formIdioma.value.idioma;
+        }
+        if (this.formIdioma.value.nivel_idioma !== undefined) {
+            this.userEdit.languages[this.lid].nivel = this.formIdioma.value.nivel_idioma;
+        }
+        if (this.formIdioma.value.fecha !== undefined) {
+            this.userEdit.languages[this.lid].nivel = this.formIdioma.value.fecha;
+        }
+
+        console.log('USUARIO MODIFICADO');
+        console.log(this.userEdit);
+        this._userservice.updateUser(this.userEdit)
+            .subscribe();
     }
 
 

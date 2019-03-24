@@ -8,6 +8,7 @@ export class FakeBackendService implements InMemoryDbService {
                 userName: 'acarmonamar',
                 name: 'Alejandro',
                 surname: 'Carmona Martos',
+                nacimiento: '19/12/1985',
                 phone: '644039911',
                 email: 'jandrocm@gmail.com',
                 password: '1234',
@@ -18,7 +19,7 @@ export class FakeBackendService implements InMemoryDbService {
                 sobre_mi: 'LOREM IPSUM',
                 otras_competencias: 'LOREM IPSUM',
                 address: [{
-                    street: 'Urbanización las Areanas - 45',
+                    calle: 'Urbanización las Areanas - 45',
                     provincia: 'Cádiz',
                     municipio: 'Chiclana de la Frontera',
                 }],

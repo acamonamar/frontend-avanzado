@@ -34,7 +34,7 @@
     <section class="container editar-formacion">
         <h2>Editar Idioma</h2>
         <hr>
-        <form id="formIdioma" class="form-grupo" [formGroup]="formIdioma" (ngSubmit)="submit(formIdioma)">
+        <form id="formIdioma" class="form-grupo" [formGroup]="formIdioma">
             <!-- IDIOMAS ------------>
             <select formControlName="idioma" ng-model="seleccion" >
                 <option *ngFor="let item of items" value="{{item.name}}">{{item.name}}</option>
@@ -47,7 +47,7 @@
 
             <input formContolName="fecha" type="text" value="{{user.languages[lid].fecha}}">
 
-            <input type="submit" value="guardar" [disabled]="!formIdioma.valid">
+            <button [disabled]="!formIdioma.valid" (click)="save()">GUARDAR</button>
             <p>Form status: {{formIdioma.status}}</p>
           </form>
     </section>

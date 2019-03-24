@@ -12,6 +12,7 @@ import { UserService }    from '../../shared/services/user.service';
 })
 export class ProfileComponent implements OnInit {
   user: User;
+  public numero_studies;
 
   constructor(
       private _userservice: UserService,
@@ -25,7 +26,10 @@ export class ProfileComponent implements OnInit {
   getUserById() {
     const id = +this._route.snapshot.paramMap.get('id');
     this._userservice.getUser(id)
-      .subscribe(user => this.user = user);
+        .subscribe(user => {this.user = user; this.updateUser(user); });
+  }
+  updateUser(user: User) {
+    this.numero_studies = this.user.studies.length;
   }
 
   removeStudie(index: number) {

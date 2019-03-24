@@ -1,15 +1,15 @@
 export class Address {
 
-    public street: string;
+    public calle: string;
     public provincia: string;
     public municipio: string;
 
     constructor(
-        street: string,
+        calle: string,
         provincia: string,
         municipio: string,
     ) {
-        this.street = street;
+        this.calle = calle;
         this.provincia = provincia;
         this.municipio = municipio;
     }

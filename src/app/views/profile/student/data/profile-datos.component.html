@@ -38,7 +38,7 @@
       </div>
       <div >
         <label>Fecha de nacimiento</label>
-        <input type="date">
+        <input type="date" formControlName="nacimiento">
       </div>
 
       <div >
@@ -67,13 +67,13 @@
        </div>
       <div formGroupName="direccion" >
         <label>Dirección</label>
-        <input formControlName="street" type="text"  >
+        <input formControlName="calle" type="text"  >
         <label>Provicia</label>
-        <select formControlName="zone" ng-model="seleccion" >
+        <select formControlName="provincia" ng-model="seleccion" >
           <option *ngFor="let provincia of provincias" value="{{provincia.name}}">{{provincia.name}}</option>
         </select>
         <label>Municipio</label>
-        <input formControlName="city" type="text"  >
+        <input formControlName="municipio" type="text"  >
       </div>
 
       <div >

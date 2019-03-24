@@ -61,7 +61,7 @@
     <section>
         <h2>Editar Formación Académica</h2>
         <hr>
-      <form id="formFormacion" class="form-grupo" [formGroup]="formFormacion" (ngSubmit)="submit(formFormacion)">
+      <form id="formFormacion" class="form-grupo" [formGroup]="formFormacion" >
           <!-- NIVEL ACADEMICO ------------->
           <select formControlName="tipo_titulo" ng-model="seleccion" >
               <option *ngFor="let tipo of tipos" value="{{tipo.name}}">{{tipo.name}}</option>
@@ -126,7 +126,7 @@
               <input type="file" value="centro">
           </div>
             <!------- FIN CICLO FORMATIVO ------------>
-        <input type="submit" value="guardar" [disabled]="!formFormacion.valid">
+          <button [disabled]="!formFormacion.valid" (click)="save()">GUARDAR</button>
         <p>Form status: {{formFormacion.status}}</p>
 
       </form>

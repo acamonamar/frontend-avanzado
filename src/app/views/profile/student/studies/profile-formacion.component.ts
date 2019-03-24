@@ -22,6 +22,7 @@ export class ProfileFormacionComponent implements OnInit {
 
     @Input() user: User;
     @Output() users: User[];
+    @Output() userEdit: User;
     @Output() titulos: ListTitulosAcademicos[];
     @Output() centros: ListCentrosEducativos[];
     @Output() tipos: ListTipoTitulo[];
@@ -105,15 +106,26 @@ export class ProfileFormacionComponent implements OnInit {
             .subscribe(user => {this.user = user; this.updateForm(user); });
     }
     updateForm(user: User) {
-        this.formFormacion.patchValue({
-            tipo_titulo: user.studies[this.sid].tipo_titulo,
-            titulo_academico_universidad: user.studies[this.sid].formacion_universidad[0].titulo,
-            titulo_academico_ciclo: user.studies[this.sid].formacion_ciclo[0].titulo,
-            centro: user.studies[this.sid].formacion_ciclo[0].centro,
-            familia: user.studies[this.sid].formacion_ciclo[0].familia,
-            grado: user.studies[this.sid].formacion_ciclo[0].grado,
-        });
-        this.nuevo_sid = this.user.studies.length;
+
+        if (user.studies[this.sid].tipo_titulo === 'Universidad'){
+            this.formFormacion.patchValue({
+                tipo_titulo: user.studies[this.sid].tipo_titulo,
+                titulo_academico_universidad: user.studies[this.sid].formacion_universidad[0].titulo,
+                centro: user.studies[this.sid].formacion_universidad[0].centro,
+                familia: user.studies[this.sid].formacion_universidad[0].familia,
+            });
+            this.nuevo_sid = this.user.studies.length;
+        }
+        if (user.studies[this.sid].tipo_titulo === 'Ciclo'){
+            this.formFormacion.patchValue({
+                tipo_titulo: user.studies[this.sid].tipo_titulo,
+                titulo_academico_ciclo: user.studies[this.sid].formacion_ciclo[0].titulo,
+                centro: user.studies[this.sid].formacion_ciclo[0].centro,
+                familia: user.studies[this.sid].formacion_ciclo[0].familia,
+                grado: user.studies[this.sid].formacion_ciclo[0].grado,
+            });
+            this.nuevo_sid = this.user.studies.length;
+        }
     }
 
     removeStudie(index: number) {
@@ -121,9 +133,42 @@ export class ProfileFormacionComponent implements OnInit {
     }
 
     save(): void {
+        console.log('USUARIO ACTUAL');
         console.log(this.user);
-        this._userservice.updateUser(this.user)
-            .subscribe(() => this.goBack());
+        console.log('USUARIO ACTUAL');
+        console.log(this.formFormacion.value);
+        this.userEdit = this.user;
+
+        if (this.formFormacion.value.tipo_titulo !== undefined) {
+            this.userEdit.studies[this.sid].tipo_titulo = this.formFormacion.value.tipo_titulo;
+        }
+        if (this.formFormacion.value.tipo_titulo === 'Universidad'){
+            if (this.formFormacion.value.titulo_academico_universidad !== undefined) {
+                this.userEdit.studies[this.sid].formacion_universidad[0].titulo = this.formFormacion.value.titulo_academico_universidad;
+            }
+            if (this.formFormacion.value.centro !== undefined) {
+                this.userEdit.studies[this.sid].formacion_universidad[0].centro = this.formFormacion.value.centro;
+            }
+            if (this.formFormacion.value.familia !== undefined) {
+                this.userEdit.studies[this.sid].formacion_universidad[0].familia = this.formFormacion.value.familia;
+            }
+        }
+        if (this.formFormacion.value.tipo_titulo === 'Ciclo') {
+            if (this.formFormacion.value.titulo_academico_ciclo !== undefined) {
+                this.userEdit.studies[this.sid].formacion_ciclo[0].titulo = this.formFormacion.value.titulo_academico_ciclo;
+            }
+            if (this.formFormacion.value.centro !== undefined) {
+                this.userEdit.studies[this.sid].formacion_ciclo[0].centro = this.formFormacion.value.centro;
+            }
+            if (this.formFormacion.value.familia !== undefined) {
+                this.userEdit.studies[this.sid].formacion_ciclo[0].familia = this.formFormacion.value.familia;
+            }
+        }
+
+        console.log('USUARIO MODIFICADO');
+        console.log(this.userEdit);
+        this._userservice.updateUser(this.userEdit)
+            .subscribe();
     }
 
     get tipo_titulo() { return this.formFormacion.get('tipo_titulo'); }

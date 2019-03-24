@@ -42,6 +42,7 @@ export class ProfileDatosComponent implements OnInit {
       this.formDatos = this.formBuilder.group({
           'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
           'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
+          'nacimiento': [''],
           'email': ['', [Validators.email]],
           'sobre_mi': [''],
           'otras_competencias': [],
@@ -51,9 +52,9 @@ export class ProfileDatosComponent implements OnInit {
               'numero': [''],
           }, {validator: dniValidator}),
           'direccion': this.formBuilder.group({
-              'street': ['' ],
-              'zone': [''],
-              'city': ['']
+              'calle': ['' ],
+              'provincia': [''],
+              'municipio': ['']
           })
       });
   }
@@ -69,6 +70,7 @@ export class ProfileDatosComponent implements OnInit {
       this.formDatos.patchValue({
           name: user.name,
           surname: user.surname,
+          nacimiento: user.nacimiento,
           email: user.email,
           permisos: user.permisos,
           sobre_mi: user.sobre_mi,
@@ -79,9 +81,9 @@ export class ProfileDatosComponent implements OnInit {
           numero: user.numero_documento,
       });
       this.direccion.patchValue({
-          street: user.address[0].street,
-          zone: user.address[0].provincia,
-          city: user.address[0].municipio,
+          calle: user.address[0].calle,
+          provincia: user.address[0].provincia,
+          municipio: user.address[0].municipio,
       });
   }
 
@@ -95,9 +97,11 @@ export class ProfileDatosComponent implements OnInit {
   }
 
   save(): void {
+      console.log('USUARIO ACTUAL');
       console.log(this.user);
+
       this.userEdit = this.user;
-      console.log(this.formDatos.value.name);
+
       if (this.formDatos.value.name !== undefined) {
         this.userEdit.name = this.formDatos.value.name;
       }
@@ -119,7 +123,23 @@ export class ProfileDatosComponent implements OnInit {
       if (this.formDatos.value.otras_competencias !== undefined) {
           this.userEdit.otras_competencias = this.formDatos.value.otras_competencias;
       }
+      if (this.documento.value.tipo !== undefined) {
+          this.userEdit.documento_identidad = this.documento.value.tipo;
+      }
+      if (this.documento.value.numero !== undefined) {
+          this.userEdit.numero_documento = this.documento.value.numero;
+      }
+      if (this.direccion.value.calle !== undefined) {
+          this.userEdit.address[0].calle = this.direccion.value.calle;
+      }
+      if (this.direccion.value.provincia !== undefined) {
+          this.userEdit.address[0].provincia = this.direccion.value.provincia;
+      }
+      if (this.direccion.value.municipio !== undefined) {
+          this.userEdit.address[0].municipio = this.direccion.value.municipio;
+      }
 
+      console.log('USUARIO MODIFICADO');
       console.log(this.userEdit);
       this._userservice.updateUser(this.userEdit)
           .subscribe(() => this.goBack());

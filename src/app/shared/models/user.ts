@@ -8,6 +8,7 @@ export class User {
     public userName: string;
     public name: string;
     public surname: string;
+    public nacimiento: string;
     public phone: string;
     public documento_identidad: string;
     public numero_documento: string;
@@ -28,6 +29,7 @@ export class User {
         userName: string,
         name: string,
         surname: string,
+        nacimiento: string,
         phone: string,
         documento_identidad: string,
         numero_documento: string,
@@ -47,6 +49,7 @@ export class User {
         this.userName = userName;
         this.name = name;
         this.surname = surname;
+        this.nacimiento = nacimiento;
         this.phone = phone;
         this.documento_identidad = documento_identidad;
         this.numero_documento = numero_documento;

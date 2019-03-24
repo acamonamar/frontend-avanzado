@@ -59,7 +59,7 @@ ESTUDIANTE
     </div>
     <div>
       Email: {{user.email}} <br>
-      Fecha Nacimiento: <br>
+      Fecha Nacimiento: {{user.nacimiento}} <br>
       Teléfono: {{user.phone}}<br>
       <span>{{user.documento_identidad}}</span>: {{user.numero_documento}}<br>
       Permisos conducir: {{user.permisos}}
@@ -78,7 +78,7 @@ ESTUDIANTE
 
   <section class="container formacion">
     <h2>Formación Académica</h2>
-    <a [routerLink]="['/admin/profile/studies']">añadir nuevo +</a>
+    <a routerLink="/admin/profile/{{user.id}}/studies/{{numero_studies}}">añadir nuevo +</a>
     <table>
       <thead>
       <tr>

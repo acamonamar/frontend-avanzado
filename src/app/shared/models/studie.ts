@@ -2,6 +2,7 @@ export interface Universidad {
     centro: string;
     titulo: string;
     fecha: string;
+    familia: string;
     formacion: string;
     certificado: boolean;
 }
