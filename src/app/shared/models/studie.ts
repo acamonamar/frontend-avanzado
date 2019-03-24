@@ -1,4 +1,4 @@
-export interface Universidad {
+export class Universidad {
     centro: string;
     titulo: string;
     fecha: string;
@@ -7,7 +7,7 @@ export interface Universidad {
     certificado: boolean;
 }
 
-export interface Ciclo {
+export class Ciclo {
     centro: string;
     familia: string;
     grado: string;

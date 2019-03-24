@@ -13,6 +13,7 @@ import { UserService }    from '../../shared/services/user.service';
 export class ProfileComponent implements OnInit {
   user: User;
   public numero_studies;
+  public numero_languages;
 
   constructor(
       private _userservice: UserService,
@@ -30,6 +31,7 @@ export class ProfileComponent implements OnInit {
   }
   updateUser(user: User) {
     this.numero_studies = this.user.studies.length;
+    this.numero_languages = this.user.languages.length;
   }
 
   removeStudie(index: number) {

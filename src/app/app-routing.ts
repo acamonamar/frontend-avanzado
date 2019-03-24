@@ -30,7 +30,7 @@ export const rootRouterConfig: Routes = [
     /* canActivate: [AuthGuard], */
     children: [
       {
-        path: 'dashboard',
+        path: 'dashboard/:id',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule',
         data: { title: 'Dashboard', breadcrumb: 'DASHBOARD' }
       },

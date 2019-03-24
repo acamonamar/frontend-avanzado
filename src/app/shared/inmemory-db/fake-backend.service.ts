@@ -39,7 +39,7 @@ export class FakeBackendService implements InMemoryDbService {
                             familia: 'Informática',
                             grado: 'Superior',
                             titulo: 'Administracion de sistemas informaticos y redes',
-                            fecha: '1397293028',
+                            fecha: '30/06/2005',
                             formacion_dual: false,
                             formacion_bilingue: false,
                             certificado: true
@@ -59,7 +59,7 @@ export class FakeBackendService implements InMemoryDbService {
                             familia: 'Informática',
                             grado: 'Superior',
                             titulo: 'Técnico Superior en Desarrollo de Aplicaciones Web',
-                            fecha: '1397293028',
+                            fecha: '30/06/2007',
                             formacion_dual: false,
                             formacion_bilingue: false,
                             certificado: true
@@ -69,7 +69,7 @@ export class FakeBackendService implements InMemoryDbService {
                         formacion_universidad: [{
                             centro: 'Universidad de Almería',
                             titulo: 'Ingeniero Técnico Informática de Gestión',
-                            fecha: '1397293028',
+                            fecha: '30/06/2010',
                             familia: 'Informática',
                             formacion: 'Oficial',
                             certificado: true,
@@ -106,8 +106,8 @@ export class FakeBackendService implements InMemoryDbService {
                         }
                         ],
                 languages: [
-                    {id: 0, lid: 0, idioma: 'Inglés', nivel: 'B2', fecha: '1548320228'},
-                    {id: 0, lid: 1, idioma: 'Portugués', nivel: 'A2', fecha: '1548320228'}
+                    {id: 0, lid: 0, idioma: 'Inglés', nivel: 'B2', fecha: '30/06/2008'},
+                    {id: 0, lid: 1, idioma: 'Portugués', nivel: 'A2', fecha: '30/06/2013'}
                 ]
             }];
         return {users};

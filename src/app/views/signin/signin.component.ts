@@ -48,7 +48,7 @@ export class SigninComponent implements OnInit {
             if ((this.login[i].email === this.formLogin.value.email )
                 && (this.login[i].password === this.formLogin.value.password )) {
               localStorage.setItem('identity', JSON.stringify(this.login[i]));
-              this._router.navigateByUrl ('/admin/dashboard');
+              this._router.navigateByUrl ('/admin/dashboard/' + this.login[i].id);
               this.user = this.login[i];
               console.log('Este usuario... ' + this.user.name);
               /*let u: User = {user: username, passwd: password};

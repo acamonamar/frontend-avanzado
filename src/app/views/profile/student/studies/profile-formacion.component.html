@@ -10,7 +10,7 @@
 
     <section class="container formacion">
         <h2>Formación Académica</h2>
-        <a routerLink="/admin/profile/{{user.id}}/studies/{{nuevo_sid}}">
+        <a routerLink="/admin/profile/{{user.id}}/studies/{{nuevo_sid}}" (click)="refresh()">
         añadir nuevo +</a>
         <table>
             <thead>
@@ -52,16 +52,17 @@
                     </span>
                 </td>
                 <td>{{user.studies[index].formacion_ciclo[0].certificado}}</td>
-                <td><a routerLink="/admin/profile/{{user.id}}/studies/{{user.studies[index].sid}}" (click)="editarFormacion()">editar</a></td>
+                <td><a routerLink="/admin/profile/{{user.id}}/studies/{{user.studies[index].sid}}" (click)="refresh()">editar</a></td>
                 <td><button (click)='removeStudie(user.studies[index].sid)'>borrar</button></td>
             </tr>
             </tbody>
         </table>
     </section>
     <section>
-        <h2>Editar Formación Académica</h2>
-        <hr>
       <form id="formFormacion" class="form-grupo" [formGroup]="formFormacion" >
+          <h2 *ngIf="tipo_titulo.value === ''">Nueva formación</h2>
+          <h2 *ngIf="tipo_titulo.value !== ''">Editar Formación Académica</h2>
+          <hr>
           <!-- NIVEL ACADEMICO ------------->
           <select formControlName="tipo_titulo" ng-model="seleccion" >
               <option *ngFor="let tipo of tipos" value="{{tipo.name}}">{{tipo.name}}</option>
@@ -98,6 +99,7 @@
             CICLO FORMATIVO
             ------------------------------------>
           <div id="ciclo" *ngIf="tipo_titulo.value == 'Ciclo'">
+              <label>Título académico</label>
               <select formControlName="titulo_academico_ciclo" ng-model="seleccion" >
                   <option *ngFor="let titulo of titulos" value="{{titulo.name}}">{{titulo.name}}</option>
               </select>

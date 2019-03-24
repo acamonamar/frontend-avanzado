@@ -22,10 +22,14 @@ export class ProfileIdiomasComponent implements OnInit {
     @Input() user: User;
     @Output() users: User[];
     @Output() userEdit: User;
+    @Input() item: ListIdiomas;
     @Output() items: ListIdiomas[];
     @Output() niveles: ListNivelesIdiomas[];
 
     public lid;
+    public nuevo_lid;
+    public valor_idioma;
+
     public formIdioma: FormGroup;
 
 
@@ -48,10 +52,14 @@ export class ProfileIdiomasComponent implements OnInit {
       this.getUserById();
 
       this.formIdioma = this.formBuilder.group({
-          'idioma': ['Elige tu idioma'],
-          'nivel_idioma': ['Elige tu nivel'],
+          'idioma': [''],
+          'nivel_idioma': [''],
+          'fecha': [''],
+          'nuevo_idioma':['']
       });
   }
+
+
 
     getIdioma() {
         this._mockservice.getIdiomas()
@@ -73,6 +81,8 @@ export class ProfileIdiomasComponent implements OnInit {
             nivel_idioma: user.languages[this.lid].nivel,
             fecha: user.languages[this.lid].fecha
         });
+
+        this.nuevo_lid = this.user.languages.length;
     }
 
 
@@ -82,14 +92,31 @@ export class ProfileIdiomasComponent implements OnInit {
 
         this.userEdit = this.user;
 
+        if (this.userEdit.languages.length === this.lid) {
+            if (!this.userEdit.languages) {
+                this.userEdit.languages = [];
+            }
+
+            this.user.languages.push({
+                id: this.userEdit.id,
+                lid: this.lid,
+                idioma: this.formIdioma.value.idioma,
+                nivel: this.formIdioma.value.nivel_idioma,
+                fecha: this.formIdioma.value.fecha
+            });
+        }
+
         if (this.formIdioma.value.idioma !== undefined) {
             this.userEdit.languages[this.lid].idioma = this.formIdioma.value.idioma;
+        }
+        if (this.formIdioma.value.idioma === 'Otros') {
+            this.userEdit.languages[this.lid].idioma = this.formIdioma.value.nuevo_idioma;
         }
         if (this.formIdioma.value.nivel_idioma !== undefined) {
             this.userEdit.languages[this.lid].nivel = this.formIdioma.value.nivel_idioma;
         }
         if (this.formIdioma.value.fecha !== undefined) {
-            this.userEdit.languages[this.lid].nivel = this.formIdioma.value.fecha;
+            this.userEdit.languages[this.lid].fecha = this.formIdioma.value.fecha;
         }
 
         console.log('USUARIO MODIFICADO');
@@ -98,6 +125,29 @@ export class ProfileIdiomasComponent implements OnInit {
             .subscribe();
     }
 
+    get idioma() { return this.formIdioma.get('idioma'); }
+
+    onChange(idioma) {
+        console.log('Selected:' + idioma.value);
+        this.valor_idioma = idioma.value;
+    }
+    addIdioma() {
+        let add_idioma;
+        add_idioma = this.formIdioma.get('nuevo_idioma');
+        console.log('Nuevo:' + add_idioma.value);
+
+        let i: number;
+        i = this.items.length;
+        console.log(i);
+        console.log(this.items);
+        this.item = { idioma_id: i + 1 , name: add_idioma.value};
+        this.items.push(this.item);
+        console.log(this.items);
+        /* punto 6 - guardamos con localStorage
+        localStorage.setItem('datos', JSON.stringify(this.items));
+        const guardado = localStorage.getItem('datos');
+        console.log('objetoObtenido: ', JSON.parse(guardado));*/
+    }
 
     goBack(): void {
         this._location.back();
