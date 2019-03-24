@@ -2,45 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de20a026-e427-42d0-9066-cbf777bc3a44" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-nivel-grado.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-tipos-titulos.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-titulos-academicos.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-centros-educativos.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-documentos-identidad.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-familias-formacion.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-nivel-grado.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-provincias.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-tipo-titulo.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/shared/models/list-titulos-academicos.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/studies/profile-formacion.component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/studies/profile-formacion.component.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/app/views/profile/student/studies/profile-formacion.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app-routing.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app-routing.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/inmemory-db/provincias.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-provincias.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/services/mock.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/mock.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-centros-educativos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/languages/profile-idiomas-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/languages/profile-idiomas.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/languages/profile-idiomas.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-documentos-identidad.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/languages/profile-idiomas.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/languages/profile-idiomas.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/studies/profile-formacion-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/studies/profile-formacion-routing.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/studies/profile-formacion.component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/studies/profile-formacion.component.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-familias-formacion.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/studies/profile-formacion.component.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/forms/studies/profile-formacion.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/studies/profile-formacion.module.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/profile.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/profile.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/models/user.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/models/user.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -53,11 +18,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="514">
-              <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+            <state relative-caret-position="628">
+              <caret line="116" column="65" lean-forward="true" selection-start-line="116" selection-start-column="65" selection-end-line="116" selection-end-column="65" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -65,11 +30,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="72" column="93" selection-start-line="72" selection-start-column="93" selection-end-line="72" selection-end-column="93" />
+            <state relative-caret-position="405">
+              <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#43#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +119,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/app/views/profile/profile-routing.module.ts" />
         <option value="$PROJECT_DIR$/src/app/views/signin/signin.component.ts" />
         <option value="$PROJECT_DIR$/src/app/views/dashboard/dashboard.component.ts" />
         <option value="$PROJECT_DIR$/src/app/views/dashboard/dashboard.component.html" />
@@ -155,7 +131,6 @@
         <option value="$PROJECT_DIR$/src/app/views/profile/profile.component.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/validators/documento.validator.ts" />
         <option value="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.component.html" />
-        <option value="$PROJECT_DIR$/src/app/shared/models/user.ts" />
         <option value="$PROJECT_DIR$/src/app/views/profile/forms/data/profile-datos.component.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/inmemory-db/provincias.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/inmemory-db/idiomas.ts" />
@@ -191,8 +166,10 @@
         <option value="$PROJECT_DIR$/src/app/shared/inmemory-db/mock-documentos-identidad.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts" />
         <option value="$PROJECT_DIR$/src/app/shared/services/mock.service.ts" />
-        <option value="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/models/user.ts" />
+        <option value="$PROJECT_DIR$/src/app/shared/services/user.service.ts" />
         <option value="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html" />
+        <option value="$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts" />
       </list>
     </option>
   </component>
@@ -233,6 +210,22 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pec1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pec1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="inmemory-db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pec1" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pec1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pec1" type="b2602c69:ProjectViewProjectNode" />
@@ -385,12 +378,12 @@
       <workItem from="1553023202891" duration="213000" />
       <workItem from="1553066381629" duration="6252000" />
       <workItem from="1553080448843" duration="1589000" />
-      <workItem from="1553096884269" duration="51480000" />
+      <workItem from="1553096884269" duration="57720000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212138000" />
+    <option name="totallyTimeSpent" value="218378000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="1107" height="1080" extended-state="6" />
@@ -420,16 +413,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/profile-datos/profile-datos.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" column="33" selection-start-line="16" selection-start-column="33" selection-end-line="16" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/models/address.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -505,26 +488,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="23" selection-start-column="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/models/user.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="45" column="49" selection-start-line="45" selection-start-column="49" selection-end-line="45" selection-end-column="49" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="42" />
-          <folding>
-            <element signature="e#0#43#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -750,13 +713,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="43" lean-forward="true" selection-start-line="14" selection-start-column="43" selection-end-line="14" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/models/list-documentos-identidad.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -771,16 +727,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="64" column="4" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="67" selection-end-column="5" />
-          <folding>
-            <element signature="e#0#63#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/shared/services/mock.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -791,20 +737,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts">
+    <entry file="file://$PROJECT_DIR$/src/app/shared/inmemory-db/users.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/models/user.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="514">
-          <caret line="78" column="9" selection-start-line="78" selection-start-column="9" selection-end-line="78" selection-end-column="9" />
+        <state relative-caret-position="578">
+          <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/languages/profile-idiomas.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="64" column="4" lean-forward="true" selection-start-line="64" selection-start-column="4" selection-end-line="67" selection-end-column="5" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/services/user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="46" lean-forward="true" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="72" column="93" selection-start-line="72" selection-start-column="93" selection-end-line="72" selection-end-column="93" />
+        <state relative-caret-position="405">
+          <caret line="27" column="32" lean-forward="true" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="27" lean-forward="true" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/views/profile/student/data/profile-datos.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="628">
+          <caret line="116" column="65" lean-forward="true" selection-start-line="116" selection-start-column="65" selection-end-line="116" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#63#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

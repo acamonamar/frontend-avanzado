@@ -11,7 +11,7 @@
     <hr>
 
     <div class="formulario-datos">
-    <form id="contactForm" [formGroup]="formDatos" (ngSubmit)="save()">
+    <form id="contactForm" [formGroup]="formDatos">
       <div >
         <label>Nombre</label>
         <input id="name" type="text" formControlName="name" >
@@ -83,15 +83,16 @@
 
       <div >
         <label>Permiso de Conducir</label>
-        <input type="text" placeholder="{{user.permisos}}" value="{{user.permisos}}" >
+        <input type="text" formControlName="permisos" >
       </div>
 
       <label>Sobre mí</label>
-      <textarea>{{user.sobre_mi}}</textarea>
+      <textarea formControlName="sobre_mi">{{user.sobre_mi}}</textarea>
       <label>Otras competencias</label>
-      <textarea>{{user.otras_competencias}}</textarea>
+      <textarea formControlName="otras_competencias">{{user.otras_competencias}}</textarea>
 
-      <button [disabled]="!formDatos.valid"  > GUARDAR</button>
+      <button [disabled]="!formDatos.valid" (click)="save()"> GUARDAR</button>
+
 
     </form>
     <p>Form status: {{formDatos.status}}</p>

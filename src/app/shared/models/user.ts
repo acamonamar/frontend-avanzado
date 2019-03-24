@@ -12,6 +12,9 @@ export class User {
     public documento_identidad: string;
     public numero_documento: string;
     public email: string;
+    public permisos: string;
+    public sobre_mi: string;
+    public otras_competencias: string;
     public password: string;
     public userRol: string;
     public avatar_hash: string;
@@ -29,6 +32,9 @@ export class User {
         documento_identidad: string,
         numero_documento: string,
         email: string,
+        permisos: string,
+        sobre_mi: string,
+        otras_competencias: string,
         password: string,
         userRol: string,
         avatar_hash: string,
@@ -44,7 +50,10 @@ export class User {
         this.phone = phone;
         this.documento_identidad = documento_identidad;
         this.numero_documento = numero_documento;
+        this.permisos = permisos;
         this.email = email;
+        this.sobre_mi = sobre_mi;
+        this.otras_competencias = otras_competencias;
         this.password = password;
         this.userRol = userRol;
         this.avatar_hash = avatar_hash;

@@ -22,7 +22,7 @@ export class ProfileDatosComponent implements OnInit {
   @Input() user: User;
   @Output() documentos: ListDocumentosIdentidad[];
   @Output() provincias: ListProvincias[];
-  userEdit: User;
+  @Output() userEdit: User;
   public formDatos: FormGroup;
 
 
@@ -43,6 +43,9 @@ export class ProfileDatosComponent implements OnInit {
           'name': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
           'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
           'email': ['', [Validators.email]],
+          'sobre_mi': [''],
+          'otras_competencias': [],
+          'permisos': [''],
           'documento': this.formBuilder.group({
               'tipo': [''],
               'numero': [''],
@@ -67,6 +70,9 @@ export class ProfileDatosComponent implements OnInit {
           name: user.name,
           surname: user.surname,
           email: user.email,
+          permisos: user.permisos,
+          sobre_mi: user.sobre_mi,
+          otras_competencias: user.otras_competencias,
       });
       this.documento.patchValue({
           tipo: user.documento_identidad,
@@ -87,21 +93,36 @@ export class ProfileDatosComponent implements OnInit {
       this._mockservice.getDocumentos()
             .subscribe(documentos => this.documentos = documentos);
   }
-  onChanges(): void {
-        console.log('CAMBIANDO' + this.user);
-  }
 
   save(): void {
       console.log(this.user);
       this.userEdit = this.user;
-      this.userEdit.name = this.formDatos.get('name').value;
-      this.userEdit.surname = this.formDatos.get('surname').value;
-      this.userEdit.phone = this.formDatos.get('phone').value;
-      this.userEdit.documento_identidad = this.formDatos.get('tipo').value;
-      this.userEdit.numero_documento = this.formDatos.get('numero').value;
+      console.log(this.formDatos.value.name);
+      if (this.formDatos.value.name !== undefined) {
+        this.userEdit.name = this.formDatos.value.name;
+      }
+      if (this.formDatos.value.surname !== undefined) {
+          this.userEdit.surname = this.formDatos.value.surname;
+      }
+      if (this.formDatos.value.phone !== undefined) {
+          this.userEdit.phone = this.formDatos.value.phone;
+      }
+      if (this.formDatos.value.email !== undefined) {
+          this.userEdit.email = this.formDatos.value.email;
+      }
+      if (this.formDatos.value.permisos !== undefined) {
+          this.userEdit.permisos = this.formDatos.value.permisos;
+      }
+      if (this.formDatos.value.sobre_mi !== undefined) {
+          this.userEdit.sobre_mi = this.formDatos.value.sobre_mi;
+      }
+      if (this.formDatos.value.otras_competencias !== undefined) {
+          this.userEdit.otras_competencias = this.formDatos.value.otras_competencias;
+      }
+
       console.log(this.userEdit);
-      this._userservice.updateUser(this.userEdit);
-          // .subscribe(() => this.goBack());
+      this._userservice.updateUser(this.userEdit)
+          .subscribe(() => this.goBack());
   }
 
   get direccion(){ return this.formDatos.get('direccion');}
