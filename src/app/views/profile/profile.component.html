@@ -1,10 +1,9 @@
 <div *ngIf="user">
   ¡Hola, {{user.name}} !
-<main class="company" *ngIf="user.userRol == 'company'">
+<main class="company" *ngIf="user.userRol == 'Company'">
   <section class="container datos" >
     <div>
       <img src="assets/img/main.jpg" width="100px" height="100px"><br>
-      {{user.id}}
     </div>
     <div>
       Nombre: {{user.nameCompany}} <br>
@@ -33,25 +32,25 @@
         <th colspan="2">Acciones</th>
       </tr>
       </thead>
-      <tbody *ngFor="let key of keys_offers">
+      <tbody *ngFor="let _ of user?.offers; let index=index; trackBy: trackByFn">
       <tr>
-        <td>{{user.offers.entities[key].oid}}</td>
-        <td>{{user.offers.entities[key].position}}</td>
-        <td>{{user.offers.entities[key].company}}</td>
-        <td>{{user.offers.entities[key].family}}</td>
-        <td>{{user.offers.entities[key].date}}</td>
+        <td>{{user.offers[index].oid}}</td>
+        <td>{{user.offers[index].position}}</td>
+        <td>{{user.offers[index].company}}</td>
+        <td>{{user.offers[index].family}}</td>
+        <td>{{user.offers[index].date}}</td>
         <td><a >editar</a></td>
-        <td><button (click)='removeOffer(user.offers.entities[key].oid)'>borrar</button></td>
+        <td><button (click)='removeOffer(user.offers[index].oid)'>borrar</button></td>
       </tr>
       </tbody>
     </table>
-  </section>
+    </section>
 </main>
 
 <!--------------------------------------------------------------
 ESTUDIANTE
 --------------------------------------------------------------->
-<main *ngIf="user.userRol === 'student'">
+<main *ngIf="user.userRol === 'Student'">
   <section class="container datos" >
     <div>
       <img src="assets/img/main.jpg" width="100px">

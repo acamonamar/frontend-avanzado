@@ -55,7 +55,8 @@ export class ProfileIdiomasComponent implements OnInit {
           'idioma': [''],
           'nivel_idioma': [''],
           'fecha': [''],
-          'nuevo_idioma':['']
+          'nuevo_idioma': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(255)]],
+
       });
   }
 
@@ -79,7 +80,8 @@ export class ProfileIdiomasComponent implements OnInit {
         this.formIdioma.patchValue({
             idioma: user.languages[this.lid].idioma,
             nivel_idioma: user.languages[this.lid].nivel,
-            fecha: user.languages[this.lid].fecha
+            fecha: user.languages[this.lid].fecha,
+            nuevo_idioma: 'escribe tu idioma'
         });
 
         this.nuevo_lid = this.user.languages.length;

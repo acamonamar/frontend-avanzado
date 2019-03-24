@@ -44,6 +44,8 @@ export class ProfileDatosComponent implements OnInit {
           'surname': ['', [Validators.required, Validators.minLength(3), Validators.maxLength(55)]],
           'nacimiento': [''],
           'email': ['', [Validators.email]],
+          'phone': [''],
+          'phone_alt': [''],
           'sobre_mi': [''],
           'otras_competencias': [],
           'permisos': [''],
@@ -68,22 +70,24 @@ export class ProfileDatosComponent implements OnInit {
 
   updateForm(user: User) {
       this.formDatos.patchValue({
-          name: user.name,
-          surname: user.surname,
-          nacimiento: user.nacimiento,
-          email: user.email,
-          permisos: user.permisos,
-          sobre_mi: user.sobre_mi,
-          otras_competencias: user.otras_competencias,
+          name: this.user.name,
+          surname: this.user.surname,
+          nacimiento: this.user.nacimiento,
+          email: this.user.email,
+          phone: this.user.phone,
+          phone_alt: this.user.phone_alt,
+          permisos: this.user.permisos,
+          sobre_mi: this.user.sobre_mi,
+          otras_competencias: this.user.otras_competencias,
       });
       this.documento.patchValue({
-          tipo: user.documento_identidad,
-          numero: user.numero_documento,
+          tipo: this.user.documento_identidad,
+          numero: this.user.numero_documento,
       });
       this.direccion.patchValue({
-          calle: user.address[0].calle,
-          provincia: user.address[0].provincia,
-          municipio: user.address[0].municipio,
+          calle: this.user.address[0].calle,
+          provincia: this.user.address[0].provincia,
+          municipio: this.user.address[0].municipio,
       });
   }
 
@@ -113,6 +117,12 @@ export class ProfileDatosComponent implements OnInit {
       }
       if (this.formDatos.value.email !== undefined) {
           this.userEdit.email = this.formDatos.value.email;
+      }
+      if (this.formDatos.value.phone !== undefined) {
+          this.userEdit.phone = this.formDatos.value.phone;
+      }
+      if (this.formDatos.value.phone_alt !== undefined) {
+          this.userEdit.phone_alt = this.formDatos.value.phone_alt;
       }
       if (this.formDatos.value.permisos !== undefined) {
           this.userEdit.permisos = this.formDatos.value.permisos;

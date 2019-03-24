@@ -40,8 +40,11 @@ export class ProfileComponent implements OnInit {
   removeExperience(index: number) {
     this.user.experiences = this.user.experiences.filter((_, i) => i !== index);
   }
-  removeSLanguage(index: number) {
+  removeLanguage(index: number) {
     this.user.languages = this.user.languages.filter((_, i) => i !== index);
+  }
+  removeOffer(index: number) {
+    this.user.offers = this.user.offers.filter((_, i) => i !== index);
   }
 
   // used to avoid refresh dom editing powers

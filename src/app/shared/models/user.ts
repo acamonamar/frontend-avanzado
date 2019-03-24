@@ -2,6 +2,7 @@ import { Address }      from './address';
 import { Studie }       from './studie';
 import { Experience }   from './experience';
 import { Language }     from './language';
+import { Offers } from './offers';
 
 export class User {
     public id: number;
@@ -10,6 +11,7 @@ export class User {
     public surname: string;
     public nacimiento: string;
     public phone: string;
+    public phone_alt: string;
     public documento_identidad: string;
     public numero_documento: string;
     public email: string;
@@ -23,6 +25,7 @@ export class User {
     public studies: Studie[];
     public experiences: Experience[];
     public languages: Language[];
+    public offers: Offers[];
 
     constructor(
         id: number,
@@ -31,6 +34,7 @@ export class User {
         surname: string,
         nacimiento: string,
         phone: string,
+        phone_alt: string,
         documento_identidad: string,
         numero_documento: string,
         email: string,
@@ -43,7 +47,8 @@ export class User {
         address: Address[],
         studies: Studie[],
         experiences: Experience[],
-        languages: Language[]
+        languages: Language[],
+        offers: Offers[]
     ) {
         this.id = id;
         this.userName = userName;
@@ -51,6 +56,7 @@ export class User {
         this.surname = surname;
         this.nacimiento = nacimiento;
         this.phone = phone;
+        this.phone_alt = phone_alt;
         this.documento_identidad = documento_identidad;
         this.numero_documento = numero_documento;
         this.permisos = permisos;
@@ -64,5 +70,6 @@ export class User {
         this.studies = studies;
         this.experiences = experiences;
         this.languages = languages;
+        this.offers = offers;
     }
 }

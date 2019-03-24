@@ -47,7 +47,7 @@
                 <option *ngFor="let nivel of niveles" value="{{nivel.name}}">{{nivel.name}}</option>
             </select>
             <label>Fecha de obtención</label>
-            <input formContolName="fecha" type="text">
+            <input formControlName="fecha" type="text">
 
             <button [disabled]="!formIdioma.valid" (click)="save()">GUARDAR</button>
             <p>Form status: {{formIdioma.status}}</p>

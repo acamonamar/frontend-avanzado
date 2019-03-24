@@ -65,12 +65,12 @@ export class ProfileFormacionComponent implements OnInit {
       this.formFormacion = this.formBuilder.group({
           'id': [''],
           'sid': [''],
-          'tipo_titulo': [''],
+          'tipo_titulo': ['',[Validators.required]],
           'titulo_academico_ciclo': [''],
           'titulo_academico_universidad': [''],
-          'centro': [''],
-          'familia': [''],
-          'grado': [''],
+          'centro': ['',[Validators.required]],
+          'familia': ['',[Validators.required]],
+          'grado': ['',[Validators.required]],
       });
 
       console.log(this.user);
