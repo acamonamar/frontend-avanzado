@@ -1,0 +1,57 @@
+<div *ngIf="user">
+    <section class="container editar-formacion">
+        <div class="avatar">
+            <img src="assets/img/main.jpg" width="100px">
+            <span>
+              <a routerLink="/admin/profile/{{user.id}}">{{user.name}} {{user.surname}}</a>
+            </span>
+        </div>
+    </section>
+    <section class="container idiomas">
+        <h2>Idiomas</h2>
+        <a routerLink="/admin/profile/{{user.id}}/languages/{{nuevo_lid}}" (click) = refresh()>añadir nuevo +</a>
+        <table>
+            <thead>
+            <tr>
+                <th>Nivel</th>
+                <th>Puesto</th>
+                <th>Fechas</th>
+                <th colspan="2">Acciones</th>
+            </tr>
+            </thead>
+            <tbody *ngFor="let _ of user?.languages; let index=index; trackBy: trackByFn">
+            <tr>
+                <td>{{user.languages[index].nivel}}</td>
+                <td>{{user.languages[index].idioma}}</td>
+                <td>{{user.languages[index].fecha}}</td>
+                <td><a routerLink="/admin/profile/{{user.id}}/languages/{{user.languages[index].lid}}" (click) = refresh()>editar</a></td>
+                <td><button (click)='removeLanguage(user.languages[index].lid)'>borrar</button></td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <section class="container editar-formacion">
+        <form id="formIdioma" class="form-grupo" [formGroup]="formIdioma">
+            <h2 *ngIf="idioma.value === ''">Nuevo Idioma</h2>
+            <h2 *ngIf="idioma.value !== ''">Editar Idioma</h2>
+            <!-- IDIOMAS ------------>
+            <select formControlName="idioma" ng-model="seleccion" (change)="onChange(idioma)">
+                <option *ngFor="let item of items" value="{{item.name}}">{{item.name}}</option>
+            </select>
+            <div *ngIf="valor_idioma === 'Otros'">
+                <input type="text" formControlName="nuevo_idioma" placeholder="introduce idioma">
+                <button (click)="addIdioma()">AÑADIR IDIOMA</button>
+            </div>
+            <!-- NIVEL ------------>
+            <select formControlName="nivel_idioma" ng-model="seleccion" >
+                <option *ngFor="let nivel of niveles" value="{{nivel.name}}">{{nivel.name}}</option>
+            </select>
+            <label>Fecha de obtención</label>
+            <input formControlName="fecha" type="text">
+
+            <button [disabled]="!formIdioma.valid" (click)="save()">GUARDAR</button>
+            <p>Form status: {{formIdioma.status}}</p>
+          </form>
+    </section>
+</div>
+

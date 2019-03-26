@@ -1,0 +1,70 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif+SC');
+*{
+  font-family: 'Noto Serif SC', serif;
+  font-size: 1rem;
+}
+body{
+  max-width: 1200px;
+  margin: 0px auto;
+}
+header{
+  margin-bottom: 20px;
+}
+section{
+  margin-bottom: 5px;
+}
+h1{font-size: 3rem}
+h2{font-size: 2rem;margin-bottom: 0}
+
+img{display: block}
+section img{height: 100px}
+table{
+  width: 100%;
+  text-align: center;
+  margin: 20px auto;
+}
+th,td{padding: 15px}
+th{background: #ccc;color:#000}
+
+label{
+  font-weight: 600;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+input{
+  display: block;
+  margin: 5px;
+  width: 100%;
+}
+label input{width: 40px}
+textarea{
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+}
+select{
+  display: block;
+  margin-bottom: 5px;
+}
+a{ padding: 10px 15px}
+
+.dashboard{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.formulario-datos{
+  width: 980px;
+  margin: 0 auto;
+}
+
+.avatar{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
