@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
 import {
   Study,
   VocationalStudy,
@@ -26,17 +25,15 @@ export class ProfileStudyComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private profileService: ProfileService,
     private store: Store<AppState>
   ) {
     this.store.select('usuario').subscribe(userState => {
       this.user = userState.user;
     });
     this.route.params.subscribe(params => {
-      const user = this.profileService.user;
       const uid = +params.uid;
       // this.store.dispatch(new  fromUserActions.CargarStudie(uid));
-      this.study = (user.studies.find(study => study.uid === uid) || {}) as
+      this.study = (this.user.studies.find(study => study.uid === uid) || {}) as
         | VocationalStudy
         | CollegeStudy;
     });
