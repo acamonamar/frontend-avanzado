@@ -1,8 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { SigninService } from './signin.service';
-import { ProfileService } from 'src/app/shared/services/profile.service';
 // PEC 2 NGRX
 import {Store} from '@ngrx/store';
 import {Subscription} from 'rxjs';
@@ -25,8 +23,6 @@ export class SigninComponent implements OnInit, OnDestroy {
   user: User;
 
   constructor(
-    private signinService: SigninService,
-    private profileService: ProfileService,
     private formBuilder: FormBuilder,
     private router: Router,
     private store: Store<AppState>

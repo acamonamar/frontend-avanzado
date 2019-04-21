@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
 import { MockData } from 'src/app/shared/mock-data';
 import { dateValidator } from 'src/app/shared/directives/date-validator.directive';
 import {
@@ -29,7 +28,6 @@ export class ProfileAccountComponent implements OnInit {
 
     constructor(
         private router: Router,
-        private profileService: ProfileService,
         private store: Store<AppState>
     ) {
       this.store.select('usuario').subscribe(userState => {

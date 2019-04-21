@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import { ProfileService } from '../../../shared/services/profile.service';
 import { User } from '../../../shared/models/user.model';
 import {Store} from '@ngrx/store';
 import {AppState} from '../../../shared/store/app.state';
@@ -14,7 +13,6 @@ export class ProfileStudentComponent implements OnInit{
   user: User;
 
   constructor(
-      private profileService: ProfileService,
       private store: Store<AppState>
   ) { }
   ngOnInit() {

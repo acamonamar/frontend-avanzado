@@ -6,9 +6,13 @@
 td{
 	padding-left:2em;
 }
-#foto-perfil, #datosPersonales{
+#foto-perfil{
 	width:25%;
+	padding: 20px;
+}
 
+#datosPersonales{
+	width:75%;
 }
 
 #otra_info{

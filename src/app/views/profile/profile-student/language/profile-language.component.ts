@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ProfileService } from '../../../../shared/services/profile.service';
 import { MockData } from 'src/app/shared/mock-data';
 import {
   Language,
@@ -28,13 +27,12 @@ user: User;
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private profileService: ProfileService,
     private store: Store<AppState>
   ) {
+    this.store.select('usuario').subscribe(userState => {
+      this.user = userState.user;
+    });
     this.route.params.subscribe(params => {
-      this.store.select('usuario').subscribe(userState => {
-        this.user = userState.user;
-      });
       const uid = +params.uid;
       this.language = (this.user.languages.find(language => language.uid === uid) ||
         {}) as Language;
@@ -70,23 +68,21 @@ user: User;
     return option1.uid === (option2 && option2.uid);
   }
   private update(language: Language) {
-    const user = this.profileService.user;
-    const languages = user.languages;
+    const languages = this.user.languages;
     const foundIndex = languages.findIndex(
       _language => _language.uid === language.uid
     );
     languages[foundIndex] = language;
-    this.store.dispatch(new fromUserActions.SaveUser(user));
+    this.store.dispatch(new fromUserActions.SaveUser(this.user));
     this.router.navigate(['/admin/profile']);
   }
   private save(language: Language) {
-    const user = this.profileService.user;
     const _language = MockData.fakeIncreaseID<Language>(
-      user.languages,
+      this.user.languages,
       language
     );
-    user.languages = [...user.languages, _language];
-    this.store.dispatch(new fromUserActions.SaveUser(user));
+    this.user.languages = [...this.user.languages, _language];
+    this.store.dispatch(new fromUserActions.SaveUser(this.user));
     this.router.navigate(['/admin/profile']);
   }
 
