@@ -3,12 +3,16 @@ export class AppSettings {
   public static readonly APP_NAME = 'PoliJob';
   public static readonly APP_LOCALSTORAGE_TOKEN = 'PoliJob_Token';
   public static readonly APP_VERSION = '0.1.0';
-  public static readonly API_ENDPOINT = '//localhost:3000/';
+  public static readonly API_ENDPOINT = 'api/';
   public static readonly STATIC_ENDPOINT = AppSettings.API_ENDPOINT + 'static/';
   public static readonly STATIC_AVATAR_ENDPOINT =
     AppSettings.STATIC_ENDPOINT + 'images/avatar/';
   public static readonly API_ENDPOINT_APP = AppSettings.API_ENDPOINT + 'app/';
   public static readonly API_ENDPOINT_USER = AppSettings.API_ENDPOINT + 'user';
+  public static readonly API_ENDPOINT_USERS =
+    AppSettings.API_ENDPOINT + 'users';
+  public static readonly API_ENDPOINT_OFFERS =
+    AppSettings.API_ENDPOINT + 'offers';
   public static readonly API_ENDPOINT_USER_ME =
     AppSettings.API_ENDPOINT + 'user-me';
   public static readonly API_ENDPOINT_USER_CREATE =
@@ -26,9 +30,9 @@ export class AppSettings {
     AppSettings.API_ENDPOINT_USER + '/upload-avatar';
   public static readonly API_ENDPOINT_USER_SENDMAIL =
     AppSettings.API_ENDPOINT_USER + '/sendmail';
-  public static readonly API_ENDPOINT_AUTH = AppSettings.API_ENDPOINT + 'auth/';
+  public static readonly API_ENDPOINT_AUTH = AppSettings.API_ENDPOINT + 'user/';
   public static readonly API_ENDPOINT_AUTH_LOCAL =
-    AppSettings.API_ENDPOINT + 'auth/local/';
+    AppSettings.API_ENDPOINT + 'user/local/';
 
   public static readonly APP_QUILL_EDITOR_CONFIGURATION = {
     toolbar: [

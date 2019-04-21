@@ -9,7 +9,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools'; */
 
 /* import { metaReducers, reducers } from './states/root.reducer';
-import { AuthEffects } from './states/auth/effects/auth.effects';
+import { UserEffects } from './states/user/effects/user.effects';
 
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { RouterEffects } from './states/router/effects/router.effects';
@@ -24,6 +24,7 @@ import { ProfileService } from './services/profile.service';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader'; */
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NotificationsService } from './services/notifications.service';
+import { OffersService } from './services/offers.service';
 
 /* export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -31,6 +32,7 @@ import { NotificationsService } from './services/notifications.service';
 
 export const CORE_SERVICES: Provider[] = [
   ProfileService,
+  OffersService,
   NotificationsService
   /* {
     provide: HTTP_INTERCEPTORS,
@@ -62,7 +64,7 @@ export const CORE_SERVICES: Provider[] = [
     StoreDevtoolsModule.instrument({ maxAge: 50 }),
     EffectsModule.forRoot([
       AppEffects,
-      AuthEffects,
+      UserEffects,
       UserEffects,
       RouterEffects
     ]),*/

@@ -1,7 +1,8 @@
-import {  Routes } from '@angular/router';
+import { Routes } from '@angular/router';
+import { AdminLayoutComponent } from './shared/components/admin-layout/admin-layout.component';
 /* import { AdminLayoutComponent } from './shared/components/layouts/admin-layout/admin-layout.component';
-import { AuthLayoutComponent } from './shared/components/layouts/auth-layout/auth-layout.component';
-import { AuthGuard } from './shared/services/auth/auth.guard'; */
+import { AuthLayoutComponent } from './shared/components/layouts/user-layout/user-layout.component';
+import { AuthGuard } from './shared/services/user/user.guard'; */
 
 export const rootRouterConfig: Routes = [
   {
@@ -16,7 +17,8 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: 'forgot-password',
-    loadChildren: './views/forgot-password/forgot-password.module#ForgotPasswordModule',
+    loadChildren:
+      './views/forgot-password/forgot-password.module#ForgotPasswordModule',
     data: { title: 'Forgot Password' }
   },
   {
@@ -26,11 +28,11 @@ export const rootRouterConfig: Routes = [
   },
   {
     path: 'admin',
-    /*  component: AdminLayoutComponent, */
+    component: AdminLayoutComponent,
     /* canActivate: [AuthGuard], */
     children: [
       {
-        path: 'dashboard/:id',
+        path: 'dashboard',
         loadChildren: './views/dashboard/dashboard.module#DashboardModule',
         data: { title: 'Dashboard', breadcrumb: 'DASHBOARD' }
       },
@@ -40,23 +42,8 @@ export const rootRouterConfig: Routes = [
         data: { title: 'Favorites', breadcrumb: 'FAVORITES' }
       },
       {
-        path: 'profile/:id',
+        path: 'profile',
         loadChildren: './views/profile/profile.module#ProfileModule',
-        data: { title: 'Material', breadcrumb: 'MATERIAL' }
-      },
-      {
-        path: 'profile/data/:id',
-        loadChildren: './views/profile/student/data/profile-datos.module#ProfileDatosModule',
-        data: { title: 'Material', breadcrumb: 'MATERIAL' }
-      },
-      {
-        path: 'profile/:id/studies/:sid',
-        loadChildren: './views/profile/student/studies/profile-formacion.module#ProfileFormacionModule',
-        data: { title: 'Material', breadcrumb: 'MATERIAL' }
-      },
-      {
-        path: 'profile/:id/languages/:lid',
-        loadChildren: './views/profile/student/languages/profile-idiomas.module#ProfileIdiomasModule',
         data: { title: 'Material', breadcrumb: 'MATERIAL' }
       },
       {

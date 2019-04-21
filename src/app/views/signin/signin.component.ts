@@ -1,66 +1,55 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute} from '@angular/router';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { UserService } from "../../shared/services/user.service";
-
-import {User} from '../../shared/models/user';
+import { Router } from '@angular/router';
+import { SigninService } from './signin.service';
+import { ProfileService } from 'src/app/shared/services/profile.service';
+// PEC 2 NGRX
+import {Store} from '@ngrx/store';
+import {Subscription} from 'rxjs';
+import {ActivarLoadingAction, DesactivarLoadingAction} from '../../shared/store/ui/ui.actions';
+import {AppState} from '../../shared/store/app.state';
+import { User} from '../../shared/models/user.model';
+import * as fromUserActions from '../../shared/store/user/user.actions';
 
 @Component({
   selector: 'app-signin',
   templateUrl: './signin.component.html',
-  styleUrls: ['./signin.component.scss'],
-  providers: [UserService]
+  styleUrls: ['./signin.component.scss']
 })
-export class SigninComponent implements OnInit {
+export class SigninComponent implements OnInit, OnDestroy {
+  loginForm: FormGroup;
+  submitted = false;
+  errorLogin = false;
+  cargando: boolean;
+  subscription: Subscription;
   user: User;
-  public title: string;
-  public formLogin: FormGroup;
-  // public identidad;
-  public login;
-
 
   constructor(
-      private formBuilder: FormBuilder,
-      private _route: ActivatedRoute,
-      private _router: Router,
-      private _userservice: UserService,
-  ) {
-    // this.identidad = this._userservice.getUsers();
-  }
+    private signinService: SigninService,
+    private profileService: ProfileService,
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private store: Store<AppState>
+  ) { }
 
   ngOnInit() {
-    this.title = 'Acceso';
-    this.formLogin = this.formBuilder.group({
-      'email': ['', [Validators.required, Validators.email]],
-      'password': ['', Validators.required]
+    this.loginForm = this.formBuilder.group({
+      email: ['', [Validators.email, Validators.required]],
+      password: ['', Validators.required]
+    });
+    this.subscription = this.store.select('ui').subscribe(uiState => {
+      this.cargando = uiState.isLoading;
     });
   }
-  submit() {
-    this._userservice.getUsers().subscribe(
-        res => {
-          console.log('Repuesta del subscribe: '+ res);
-
-          this.login = res;
-          let encontrado = 0;
-          let i: number;
-          for ( i = 0; i < this.login.length; i++) {
-            if ((this.login[i].email === this.formLogin.value.email )
-                && (this.login[i].password === this.formLogin.value.password )) {
-              localStorage.setItem('identity', JSON.stringify(this.login[i]));
-              this._router.navigateByUrl ('/admin/dashboard/' + this.login[i].id);
-              this.user = this.login[i];
-              console.log('Este usuario... ' + this.user.name);
-              /*let u: User = {user: username, passwd: password};
-              this._userService.setUserLoggedIn(u);*/
-              encontrado = 1;
-              console.log('son iguales');
-            }
-          }
-          if (encontrado === 0) {
-            alert('Usuario incorrecto');
-          }
-        });
-    console.log(this.formLogin.value);
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
+
+  onSubmit() {
+    this.store.dispatch( new ActivarLoadingAction());
+    this.store.dispatch(new fromUserActions.LogIn(this.loginForm.value));
+    this.router.navigate(['admin/dashboard/']);
+    this.store.dispatch( new DesactivarLoadingAction());
+  }
+
 }
