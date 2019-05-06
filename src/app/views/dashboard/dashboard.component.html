@@ -1,16 +1,12 @@
-<div *ngIf="user">
-  <div class="grid grid-pad">
-      <div class="module hero">
-        <h4>¡ Hola {{user.name}} !</h4>
-      </div>
-  </div>
-  <section class="container editar-formacion">
-    <div class="avatar">
-      <img src="assets/img/main.jpg" width="100px">
-      <span>
-        <a routerLink="/admin/profile/{{user.id}}">Mi perfil</a>
-        <a>Mi ofertas</a>
-      </span>
+<!-- <app-menu></app-menu> -->
+
+<div class="container-fluid">
+    <div class="jumbotron text-center">
+        <h1>
+            <span translate>BIENVENIDO</span>
+        </h1>
+        <p>
+            <i class="fa fa-bookmark-o"></i> <span translate>Version</span> {{titulo}}
+        </p>
     </div>
-  </section>
 </div>

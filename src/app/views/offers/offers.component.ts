@@ -1,8 +1,14 @@
-import { Component, OnInit, Output } from '@angular/core';
-import {User} from '../../shared/models/user';
-import {UserService} from '../../shared/services/user.service';
-import {ActivatedRoute} from '@angular/router';
-import {Offers} from '../../shared/models/offers';
+import { Component, OnInit } from '@angular/core';
+import { OffersService } from 'src/app/shared/services/offers.service';
+import { Offer } from 'src/app/shared/models/offer.model';
+import { ProfileService } from 'src/app/shared/services/profile.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AppStore } from 'src/app/shared/states/store.interface';
+import { Observable, of } from 'rxjs';
+import { User } from 'src/app/shared/models/user.model';
+import { getProfile } from 'src/app/shared/states/user';
+import { getOffers } from 'src/app/shared/states/offers';
 
 @Component({
   selector: 'app-offers',
@@ -10,49 +16,16 @@ import {Offers} from '../../shared/models/offers';
   styleUrls: ['./offers.component.scss']
 })
 export class OffersComponent implements OnInit {
-  @Output() offersList: Offers[];
-
-  constructor(
-      private _userservice: UserService,
-  ) {
+  user$: Observable<User>;
+  offers$: Observable<Offer[]>;
+  isOffersList = true;
+  constructor(private route: ActivatedRoute, private store$: Store<AppStore>) {
+    this.route.data.subscribe(
+      params => (this.isOffersList = !params.my_offers)
+    );
+    this.user$ = this.store$.select(getProfile);
+    this.offers$ = this.store$.select(getOffers);
   }
 
-  ngOnInit(): void {
-    this.getOffers();
-  }
-
-  getOffers() {
-    this._userservice.getUsers().subscribe(
-        res => {
-          console.log('Repuesta del subscribe: ');
-          console.log(res);
-
-          let i: number;
-          let j: number;
-          const tempObj = {};
-          for ( i = 0; i < res.length; i++) {
-            if ( res[i].userRol === 'Company') {
-                console.log(res[i].userRol);
-                console.log(res[i].offers.length);
-              for ( j = 0 ; j < res[i].offers.length; j++) {
-                  console.log(res[i].id);
-                      console.log(res[i].offers[j].oid);
-                      console.log(res[i].offers[j].empresa);
-                      console.log(res[i].offers[j].familia);
-                      console.log(res[i].offers[j].fecha);
-                      console.log(res[i].offers[j].puesto);
-                this.offersList.push({
-                  id: res[i].id,
-                  oid: res[i].offers[j].oid,
-                    puesto: res[i].offers[j].puesto,
-                    empresa: res[i].offers[j].empresa,
-                  familia: res[i].offers[j].familia,
-                  fecha: res[i].offers[j].fecha,
-                });
-              }
-            }
-          }
-        });
-  }
+  ngOnInit() {}
 }
-

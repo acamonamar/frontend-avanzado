@@ -1,0 +1,36 @@
+<div class="container profile">
+  <form [formGroup]="rForm" (submit)="submit()">
+    <!-- NIVEL -->
+    <mat-form-field >
+
+    <mat-select placeholder="Nivel" [compareWith]="compareLevel" name="level" formControlName="level">
+        <mat-option *ngFor="let level of languageLevels" [value]="level"> {{ level.name }} </mat-option>
+      </mat-select>
+      <mat-hint align="end">elige nivel ^</mat-hint>
+    </mat-form-field>
+    <!-- NOMBRE -->
+    <mat-form-field >
+      <mat-select placeholder="Idioma"
+                  [compareWith]="compareName"
+                  name="name"
+                  formControlName="name">
+        <mat-option
+                [value]="name"
+                *ngFor="let name of languageNames">
+                  {{ name.name }</mat-option>
+      </mat-select>
+              <mat-hint align="end">elige idioma^</mat-hint>
+    </mat-form-field>
+
+    <!-- FECHA -->
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" placeholder="Elige una fecha" formControlName="date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div class="ancho-completo">
+      <button mat-raised-button color="primary" type="submit" [disabled]="rForm.invalid">Guardar</button>
+    </div>
+  </form>
+</div>

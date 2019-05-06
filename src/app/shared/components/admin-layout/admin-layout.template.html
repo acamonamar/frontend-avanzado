@@ -1,0 +1,49 @@
+<!-- <div class="app-admin-wrap" [dir]="layoutConf.dir"> -->
+<!-- Header for top navigation layout -->
+<!-- ONLY REQUIRED FOR **TOP** NAVIGATION LAYOUT -->
+<!--   <app-header-top
+    *ngIf="layoutConf.navigationPos === 'top'"
+    [notificPanel]="notificationPanel"
+  >
+  </app-header-top> -->
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div>
+      <img src="/assets/img/logo.png" style="max-width: 100px">
+      <span class="example-fill-remaining-space"></span>
+    </div>
+    <div>
+      <a routerLink="/admin/profile">
+        <button mat-button >
+          <i class="material-icons">
+          account_box
+        </i>My Profile
+        </button>
+      </a>|
+      <a routerLink="/">
+        <button mat-button>
+          <i class="material-icons">
+          subdirectory_arrow_right
+          </i>
+          Logout
+        </button>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container class="uoc-employer">
+  <mat-drawer mode="side" opened>
+    <button mat-button [matMenuTriggerFor]="menu" >Menu</button>
+    <mat-menu #menu="matMenu" opened>
+      <button mat-menu-item><a routerLink="/admin/dashboard">Dashboard</a></button>
+      <button mat-menu-item><a routerLink="/admin/offers">Offers</a></button>
+      <button mat-menu-item><a routerLink="/admin/config">Configuración</a></button>
+      <button mat-menu-item><a [routerLink]="['/admin/offers/my-offers']">Mis ofertas</a></button>
+    </mat-menu>
+  </mat-drawer>
+  <mat-drawer-content><router-outlet></router-outlet></mat-drawer-content>
+</mat-drawer-container>
+
+
+<!-- </div> -->

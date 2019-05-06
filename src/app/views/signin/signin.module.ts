@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule} from '@angular/forms';
-import { FormsModule } from '@angular/forms';
+
 import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { CustomMaterialModule } from "../../shared/material/material.module";
 
 @NgModule({
   declarations: [SigninComponent],
-  imports: [
-    CommonModule,
-    SigninRoutingModule,
-    ReactiveFormsModule,
-    FormsModule
-  ]
+  imports: [SharedModule, SigninRoutingModule, CustomMaterialModule],
+  providers: []
 })
-export class SigninModule { }
+export class SigninModule {}

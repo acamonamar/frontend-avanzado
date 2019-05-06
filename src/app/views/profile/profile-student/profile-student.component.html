@@ -1,0 +1,253 @@
+<div *ngIf="user" class="profile">
+  <div>
+    <img src="{{ user.avatar_hash }}" alt="perfil">
+    <h3>{{ user.name + ' ' + user.surname }}</h3>
+  </div>
+    <!-- TABS -->
+  <div>
+    <mat-tab-group>
+      <!-- TABS 1 -->
+      <mat-tab label="Perfil">
+        <h2>{{ user.name + ' ' + user.surname }}</h2>
+        <a [routerLink]="['/admin/profile/profile-student/account']">Modificar</a>
+        <mat-divider></mat-divider>
+        <mat-list>
+              <mat-list-item>
+                <span>Email: </span>
+                <p>{{ user.email }}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <span>Fecha de nacimiento: </span>
+                <p>{{ user.birthdate }}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <span>Teléfono: </span>
+                <p>{{ user.phone }}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <span>NIF/NIE: </span>
+                <p>{{ user.documentNumber }}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <span>Permisos de conducir: </span>
+                <p>{{ user.license }}</p>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <mat-list-item>
+                <h3>Dirección: </h3>
+              </mat-list-item>
+              <mat-list-item>
+                <p>{{ user.address | json }}</p>
+              </mat-list-item>
+            </mat-list>
+      </mat-tab>
+
+      <!-- TABS 2 -->
+      <mat-tab label="Formación">
+        <a [routerLink]="['/admin/profile/profile-student/study']"
+        >Nueva formación</a
+        >
+        <table mat-table [dataSource]="user.studies" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="tipo">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+            <td mat-cell *matCellDef="let study"> {{ study.level.name }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="nivel">
+            <th mat-header-cell *matHeaderCellDef> Nivel </th>
+            <td mat-cell *matCellDef="let study"> {{ study.grade?.name }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="titulo">
+            <th mat-header-cell *matHeaderCellDef> Título </th>
+            <td mat-cell *matCellDef="let study"> {{ study.title.name || study.title }} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="centro">
+            <th mat-header-cell *matHeaderCellDef> Centro </th>
+            <td mat-cell *matCellDef="let study">{{ study.institution.name || study.institution }} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let study"> {{ study.date }} </td>
+          </ng-container>
+
+
+          <ng-container matColumnDef="certificado">
+            <th mat-header-cell *matHeaderCellDef> Certificado </th>
+            <td mat-cell *matCellDef="let study"> {{ study.certificate ? 'Sí' : 'No' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="bilingue">
+            <th mat-header-cell *matHeaderCellDef> Bilingüe </th>
+            <td mat-cell *matCellDef="let study"> {{ study.bilingue ? 'Sí' : 'No' }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="dual">
+            <th mat-header-cell *matHeaderCellDef> Dual </th>
+            <td mat-cell *matCellDef="let study"> {{ study.dual ? 'Sí' : 'No' }}</td>
+          </ng-container>
+
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let study">
+              <a [routerLink]="['/admin/profile/profile-student/study', study.uid]">Editar</a>
+              | <a style="cursor:pointer" (click)="deleteStudy(study.uid)">Borrar</a></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="studiesColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: studiesColumns;"></tr>
+        </table>
+
+      </mat-tab>
+
+      <!-- TABS 3 -->
+      <mat-tab label="Idiomas">
+        <a [routerLink]="['/admin/profile/profile-student/language']"
+        >Nuevo idioma</a
+        >
+        <table mat-table [dataSource]="user.languages" class="mat-elevation-z8">
+
+          <!--- Note that these columns can be defined in any order.
+                The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="level">
+            <th mat-header-cell *matHeaderCellDef> Nivel </th>
+            <td mat-cell *matCellDef="let language"> {{language.level.name}} </td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Título </th>
+            <td mat-cell *matCellDef="let language"> {{language.name.name}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let language"> {{language.date}} </td>
+          </ng-container>
+
+          <!-- Weight Column -->
+          <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef> Acciones </th>
+            <td mat-cell *matCellDef="let language">
+              <a
+                      [routerLink]="[
+                        '/admin/profile/profile-student/language',
+                        language.uid
+                      ]"
+              >Editar</a
+              >
+              |
+              <a style="cursor:pointer" (click)="deleteLanguage(language.uid)"
+              >Borrar</a
+              ></td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</div>
+<div *ngIf="!user" id="contenido">
+  <p>Datos están siendo cargados...</p>
+</div>
+
+
+
+<!--
+
+<section id="formacion_academica">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <th>Tipo</th>
+        <th>Nivel</th>
+        <th>T&iacute;tulo</th>
+        <th>Centro</th>
+        <th>Fecha</th>
+        <th>Certificado</th>
+        <th>Bilingüe</th>
+        <th>Dual</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let study of user.studies; let i = index">
+          <td>{{ study.level.name }}</td>
+          <td>{{ study.grade?.name }}</td>
+
+          <td>{{ study.title.name || study.title }}</td>
+          <td>{{ study.institution.name || study.institution }}</td>
+          <td>{{ study.date }}</td>
+          <td>{{ study.certificate ? 'Sí' : 'No' }}</td>
+          <td>{{ study.bilingue ? 'Sí' : 'No' }}</td>
+          <td>{{ study.dual ? 'Sí' : 'No' }}</td>
+
+          <td>
+            <a
+              [routerLink]="['/admin/profile/profile-student/study', study.uid]"
+              >Editar</a
+            >
+            |
+            <a style="cursor:pointer" (click)="deleteStudy(study.uid)"
+              >Borrar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <a [routerLink]="['/admin/profile/profile-student/study']"
+      >Nueva formación</a
+    >
+  </section>
+
+  <section id="languages">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-light">
+        <th>Nivel</th>
+        <th>Idioma</th>
+        <th>Fecha</th>
+        <th>Acciones</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let language of user.languages">
+          <td>{{ language.level.name }}</td>
+          <td>{{ language.name.name }}</td>
+          <td>{{ language.date }}</td>
+          <td>
+            <a
+              [routerLink]="[
+                '/admin/profile/profile-student/language',
+                language.uid
+              ]"
+              >Editar</a
+            >
+            |
+            <a style="cursor:pointer" (click)="deleteLanguage(language.uid)"
+              >Borrar</a
+            >
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+  </section>
+  -->
+
+

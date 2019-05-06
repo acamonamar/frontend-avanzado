@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 /*
 import { TranslateModule } from '@ngx-translate/core';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
 
 // COMPONENTS
+import { AppComfirmComponent } from './services/app-confirm/app-confirm.component';
+import { AdminLayoutComponent } from './components/admin-layout/admin-layout.component';
+
+
+// MATERIAL
+import { CustomMaterialModule } from './material/material.module';
 
 // DIRECTIVES
 
@@ -14,16 +20,23 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar'; */
 
 // SERVICES
 import { AppConfirmService } from './services/app-confirm/app-confirm.service';
-import { AppComfirmComponent } from './services/app-confirm/app-confirm.component';
 
-const classesToInclude = [AppComfirmComponent];
+const declarations = [AppComfirmComponent, AdminLayoutComponent];
+const exports = [
+  CommonModule,
+  FormsModule,
+  ReactiveFormsModule,
+  RouterModule,
+  AppComfirmComponent,
+  AdminLayoutComponent
+];
+const providers = [AppConfirmService];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, RouterModule],
-
-  providers: [AppConfirmService],
+    imports: [CommonModule, FormsModule, ReactiveFormsModule, RouterModule, CustomMaterialModule],
   entryComponents: [AppComfirmComponent],
-  declarations: classesToInclude,
-  exports: classesToInclude
+  providers,
+  declarations,
+  exports
 })
 export class SharedModule {}
