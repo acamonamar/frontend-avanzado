@@ -1,20 +1,21 @@
 <div class="container profile">
   <form [formGroup]="rForm" (submit)="save()">
     <div>
-    <mat-form-field hintLabel="Max 255 caracteres">
+    <mat-form-field hintLabel="Entre 3 y 255 caracteres">
       <input matInput #input maxlength="255" placeholder="Nombre" formControlName="name">
       <mat-hint align="end">{{input.value?.length || 3}}/255</mat-hint>
     </mat-form-field>
-    <mat-form-field hintLabel="Max 255 caracteres">
+    <mat-form-field hintLabel="Entre 3 y 255 caracteres">
       <input matInput #input maxlength="255" placeholder="Apellidos" formControlName="surname">
       <mat-hint align="end">{{input.value?.length || 3}}/255</mat-hint>
     </mat-form-field>
     </div>
     <div>
-    <mat-form-field hintLabel="Max 255 caracteres">
-      <input matInput #input maxlength="255" placeholder="Fecha de nacimiento" formControlName="birthdate">
-      <mat-hint align="end">{{input.value?.length || 3}}/255</mat-hint>
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="picker" placeholder="Fecha de nacimiento" formControlName="birthdate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
     </div>
     <div>
     <mat-form-field>
@@ -34,19 +35,17 @@
                       *ngFor="let documentType of documentsType"
                     >{{ documentType.name }}</mat-option>
         </mat-select>
-        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+        <mat-hint align="end">elige un tipo ^</mat-hint>
       </mat-form-field>
 
-      <mat-form-field hintLabel="Max 255 characters">
+      <mat-form-field>
         <input matInput #input maxlength="255" placeholder="Número documento" formControlName="documentNumber">
-        <mat-hint align="end">{{input.value?.length || 3}}/255</mat-hint>
       </mat-form-field>
     </div>
     <div>
       <h3> Dirección</h3>
-      <mat-form-field hintLabel="Max 255 characters">
+      <mat-form-field>
         <input matInput #input maxlength="255" placeholder="Calle" formControlName="street">
-        <mat-hint align="end">{{input.value?.length || 3}}/255</mat-hint>
       </mat-form-field>
       <mat-form-field class="form-group">
         <mat-select [compareWith]="compareByUID"
@@ -56,7 +55,7 @@
                       *ngFor="let province of provinces"
           >{{ province.name }}</mat-option>
         </mat-select>
-        <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+        <mat-hint align="end">Selecione provincia ^</mat-hint>
       </mat-form-field>
     </div>
 
