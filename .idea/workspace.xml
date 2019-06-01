@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="de20a026-e427-42d0-9066-cbf777bc3a44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/shared/inmemory-db/fake-backend.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/views/profile/profile-student/account/profile-account.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/views/profile/profile-student/account/profile-account.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/theme-variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/theme/theme.scss" beforeDir="false" />
-    </list>
+    <list default="true" id="de20a026-e427-42d0-9066-cbf777bc3a44" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -346,12 +340,12 @@
       <workItem from="1555692068644" duration="1829000" />
       <workItem from="1555751115310" duration="1615000" />
       <workItem from="1555834751772" duration="1138000" />
-      <workItem from="1557156778984" duration="963000" />
+      <workItem from="1557156778984" duration="1236000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="252465000" />
+    <option name="totallyTimeSpent" value="252738000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1280" y="0" width="2560" height="1080" extended-state="0" />

@@ -1,9 +1,0 @@
-<h2>
-  Offers Detail
-</h2>
-
-<pre>{{ offer | json }} </pre>
-
-<button mat-raised-button color="primary" *ngIf="!isSubscribe()" (click)="subscribe()"> Inscribirse</button>
-
-<button mat-raised-button color="secondary" *ngIf="isSubscribe()" (click)="unsubscribe()">Eliminar oferta</button>
