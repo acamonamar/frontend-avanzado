@@ -1,0 +1,49 @@
+<form [formGroup]="rForm" (submit)="submit()">
+
+  <!-- CENTRO EDUCATIVO -->
+  <mat-form-field>
+    <mat-select placeholder="Centro Educativo" [compareWith]="compareInstitution" name="institution" formControlName="institution">
+      <mat-option *ngFor="let institution of institutions" [value]="institution"> {{ institution.name }} </mat-option>
+    </mat-select>
+    <mat-hint align="end">elige un centro ^</mat-hint>
+  </mat-form-field>
+
+  <!-- FAMILIA EDUCATIVA -->
+  <mat-form-field>
+  <mat-select placeholder="Familia" [compareWith]="compareCategory" name="category" formControlName="category">
+      <mat-option *ngFor="let category of categories" [value]="category"> {{category.name}} </mat-option>
+    </mat-select>
+    <mat-hint align="end">elige una familia ^</mat-hint>
+  </mat-form-field>
+
+  <!-- GRADO  -->
+    <mat-form-field>
+
+    <mat-select placeholder="Grado" [compareWith]="compareGrade" name="grade" formControlName="grade">
+      <mat-option *ngFor="let grade of grades" [value]="grade"> {{grade.name}} </mat-option>
+    </mat-select>
+    <mat-hint align="end">elige un grado ^</mat-hint>
+    </mat-form-field>
+
+  <!-- TÍTULO  -->
+      <mat-form-field>
+
+      <mat-select placeholder="Título" [compareWith]="compareTitle" name="title" formControlName="title">
+      <mat-option *ngFor="let title of titles" [value]="title"> {{ title.name }} </mat-option>
+    </mat-select>
+    <mat-hint align="end">elige un título ^</mat-hint>
+      </mat-form-field>
+
+  <!-- FECHA -->
+  <mat-form-field>
+    <input matInput [matDatepicker]="picker" placeholder="Elige una fecha" formControlName="date">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-checkbox formControlName="bilingue">Bilingue</mat-checkbox>
+  <mat-checkbox formControlName="dual"> Dual</mat-checkbox>
+  <div class="ancho-completo">
+    <button mat-raised-button color="primary" type="submit" [disabled]="rForm.invalid">Guardar</button>
+  </div>
+</form>
