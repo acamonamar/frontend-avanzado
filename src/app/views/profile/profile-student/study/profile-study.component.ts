@@ -11,9 +11,9 @@ import {
   Study,
   VocationalStudy,
   CollegeStudy
-} from 'src/app/shared/models/study.model';
-import { MockData } from 'src/app/shared/mock-data';
-import { User } from 'src/app/shared/models/user.model';
+} from '../../../../shared/models/study.model';
+import { MockData } from '../../../../shared/mock-data';
+import { User } from '../../../../shared/models/user.model';
 
 @Component({
   selector: 'app-profile-study',
@@ -87,5 +87,13 @@ export class ProfileStudyComponent implements OnChanges {
   public isSelectUniversity(): boolean {
     const value = this.rForm.get('option').value;
     return value && value.uid === MockData.TYPE_STUDIES[1].uid;
+  }
+
+    submit() {
+        
+    }
+
+  exit($event) {
+    
   }
 }

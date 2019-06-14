@@ -42,11 +42,11 @@
 
         <!--button  (click)="login()" color="primary">Login</button-->
 
-        <button mat-raised-button *ngIf="!cargando" [disabled]="loginForm.invalid" color="primary">
+        <button mat-raised-button [disabled]="loginForm.invalid" color="primary">
           LOGIN
         </button>
 
-        <button mat-raised-button *ngIf="cargando" [disabled]="true" color="secondary"> Espere ... </button>
+        <!--button mat-raised-button *ngIf="cargando" [disabled]="true" color="secondary"> Espere ... </button-->
 
         <a routerLink="/forgot-password" class="btn btn-link">
           FORGOT PASSWORD
