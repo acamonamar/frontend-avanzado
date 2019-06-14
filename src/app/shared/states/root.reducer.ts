@@ -21,9 +21,18 @@ export const reducers = {
 };
 
 export function localStorageSyncReducer(
-  reducer: ActionReducer<any>
+    reducer: ActionReducer<any>
 ): ActionReducer<any> {
   return localStorageSync({ keys: ['auth'], rehydrate: true })(reducer);
+}
+
+export function stateSetter(reducer: ActionReducer<any>): ActionReducer<any> {
+  return function(state: any, action: any) {
+    if (action.type === 'SET_ROOT_STATE') {
+      return action.payload;
+    }
+    return reducer(state, action);
+  };
 }
 
 // ------------------------------------------------------------------------------
@@ -32,7 +41,7 @@ export function localStorageSyncReducer(
 // only at the end : https://github.com/tshelburne/redux-batched-actions
 // can be very handy when normalizing HTTP response
 /* const metaReducersDev = [storeFreeze, enableBatching]; */
-const metaReducersDev = [storeFreeze, localStorageSyncReducer];
+const metaReducersDev = [storeFreeze, localStorageSyncReducer, stateSetter];
 
 /* const metaReducersProd = [enableBatching];  */
 const metaReducersProd = [];
